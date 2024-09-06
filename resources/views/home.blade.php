@@ -20,15 +20,9 @@
 
     <!-- Libraries Stylesheet -->
      <link rel="stylesheet" href="{{asset('lib/owlcarousel/assets/owl.carousel.min.css')}}">
-     <!-- <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet"> -->
      
+     <!-- Customized Bootstrap Stylesheet -->
      <link rel="stylesheet" href=" {{asset('css/style.css')}} ">
-
-    <!-- Customized Bootstrap Stylesheet -->
-     {{-- 
-     @vite('resources/css/app.css','resources/css/style.css','resources/js/app.js','resources/js/main.js')
-     --}}
-    <!-- <link href="" rel="stylesheet"> -->
 </head>
 
 <body>
@@ -47,9 +41,29 @@
                         <li class="nav-item border-right border-secondary">
                             <a class="nav-link text-body small" href="#">Contact</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-body small" href="#">Login</a>
-                        </li>
+                        @if (Route::has('login'))
+                            <li class="nav-item d-flex  flex-1 justify-end">
+                                @auth
+                                    <a
+                                        href="{{ url('/dashboard') }}"
+                                        class="nav-link text-body small"
+                                    >
+                                        Dashboard
+                                    </a>
+                                @else
+                                    <a href="{{route('login')}}" class="border-right border-secondary nav-link text-body small">Login</a>
+
+                                    @if (Route::has('register'))
+                                        <a
+                                            href="{{ route('register') }}"
+                                            class="nav-link text-body small"
+                                        >
+                                            Register
+                                        </a>
+                                    @endif
+                                @endauth
+                            </li>
+                        @endif
                     </ul>
                 </nav>
             </div>
@@ -817,7 +831,6 @@
     <script src="{{asset('lib/owlcarousel/owl.carousel.min.js')}}"></script>
 
     <!-- Template Javascript -->
-    <!-- <script src="js/main.js"></script> -->
      <script src="{{asset('js/main.js')}}"></script>
 </body>
 

@@ -7,8 +7,13 @@ Route::get('/', function () {
     return view('home');
 });
 
-// Route::get('/', function () {});
+Route::get('/page', function () {
+    return view('singalPage');
+});
 
+Route::get('/login', function () {
+    return view('welcome');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

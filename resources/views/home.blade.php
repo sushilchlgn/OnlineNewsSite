@@ -42,25 +42,22 @@
                             <a class="nav-link text-body small" href="#">Contact</a>
                         </li>
                         @if (Route::has('login'))
-                        <li class="nav-item d-flex  flex-1 justify-end">
-                            @auth
-                            <a
-                                href="{{ url('/dashboard') }}"
-                                class="nav-link text-body small">
-                                Dashboard
-                            </a>
-                            @else
-                            <a href="{{route('login')}}" class="border-right border-secondary nav-link text-body small">Login</a>
+                            <li class="nav-item d-flex  flex-1 justify-end">
+                                @auth
+                                    <a href="{{ url('/dashboard') }}" class="nav-link text-body small">
+                                        Dashboard
+                                    </a>
+                                @else
+                                    <a href="{{route('login')}}"
+                                        class="border-right border-secondary nav-link text-body small">Login</a>
 
-                            @if (Route::has('register'))
-                            <a
-                                href="{{ route('register') }}"
-                                class="nav-link text-body small">
-                                Register
-                            </a>
-                            @endif
-                            @endauth
-                        </li>
+                                    @if (Route::has('register'))
+                                        <a href="{{ route('register') }}" class="nav-link text-body small">
+                                            Register
+                                        </a>
+                                    @endif
+                                @endauth
+                            </li>
                         @endif
                     </ul>
                 </nav>
@@ -92,8 +89,9 @@
         </div>
         <div class="row align-items-center bg-white py-3 px-lg-5">
             <div class="col-lg-4">
-                <a href="index.html" class="navbar-brand p-0 d-none d-lg-block">
-                    <h1 class="m-0 display-4 text-uppercase text-primary">Biz<span class="text-secondary font-weight-normal">News</span></h1>
+                <a href="/" class="navbar-brand p-0 d-none d-lg-block">
+                    <h1 class="m-0 display-4 text-uppercase text-primary">Biz<span
+                            class="text-secondary font-weight-normal">News</span></h1>
                 </a>
             </div>
             <div class="col-lg-8 text-center text-lg-right">
@@ -107,15 +105,16 @@
     <!-- Navbar Start -->
     <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-2 py-lg-0 px-lg-5">
-            <a href="index.html" class="navbar-brand d-block d-lg-none">
-                <h1 class="m-0 display-4 text-uppercase text-primary">Biz<span class="text-white font-weight-normal">News</span></h1>
+            <a href="/" class="navbar-brand d-block d-lg-none">
+                <h1 class="m-0 display-4 text-uppercase text-primary">Biz<span
+                        class="text-white font-weight-normal">News</span></h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
                 <div class="navbar-nav mr-auto py-0">
-                    <a href="index.html" class="nav-item nav-link active">Home</a>
+                    <a href="/" class="nav-item nav-link active">Home</a>
                     <a href="category.html" class="nav-item nav-link">Category</a>
                     <a href="single.html" class="nav-item nav-link">Single News</a>
                     <div class="nav-item dropdown">
@@ -153,7 +152,8 @@
                                     href="">Business</a>
                                 <a class="text-white" href="">Jan 01, 2045</a>
                             </div>
-                            <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
+                            <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit
+                                amet elit. Proin vitae porta diam...</a>
                         </div>
                     </div>
                     <div class="position-relative overflow-hidden" style="height: 500px;">
@@ -164,7 +164,8 @@
                                     href="">Business</a>
                                 <a class="text-white" href="">Jan 01, 2045</a>
                             </div>
-                            <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
+                            <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit
+                                amet elit. Proin vitae porta diam...</a>
                         </div>
                     </div>
                     <div class="position-relative overflow-hidden" style="height: 500px;">
@@ -175,7 +176,8 @@
                                     href="">Business</a>
                                 <a class="text-white" href="">Jan 01, 2045</a>
                             </div>
-                            <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
+                            <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit
+                                amet elit. Proin vitae porta diam...</a>
                         </div>
                     </div>
                 </div>
@@ -191,7 +193,8 @@
                                         href="">Business</a>
                                     <a class="text-white" href=""><small>Jan 01, 2045</small></a>
                                 </div>
-                                <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                                <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum
+                                    dolor sit amet elit...</a>
                             </div>
                         </div>
                     </div>
@@ -204,7 +207,8 @@
                                         href="">Business</a>
                                     <a class="text-white" href=""><small>Jan 01, 2045</small></a>
                                 </div>
-                                <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                                <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum
+                                    dolor sit amet elit...</a>
                             </div>
                         </div>
                     </div>
@@ -217,7 +221,8 @@
                                         href="">Business</a>
                                     <a class="text-white" href=""><small>Jan 01, 2045</small></a>
                                 </div>
-                                <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                                <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum
+                                    dolor sit amet elit...</a>
                             </div>
                         </div>
                     </div>
@@ -230,7 +235,8 @@
                                         href="">Business</a>
                                     <a class="text-white" href=""><small>Jan 01, 2045</small></a>
                                 </div>
-                                <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                                <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum
+                                    dolor sit amet elit...</a>
                             </div>
                         </div>
                     </div>
@@ -247,11 +253,16 @@
             <div class="row align-items-center bg-dark">
                 <div class="col-12">
                     <div class="d-flex justify-content-between">
-                        <div class="bg-primary text-dark text-center font-weight-medium py-2" style="width: 170px;">Breaking News</div>
+                        <div class="bg-primary text-dark text-center font-weight-medium py-2" style="width: 170px;">
+                            Breaking News</div>
                         <div class="owl-carousel tranding-carousel position-relative d-inline-flex align-items-center ml-3"
                             style="width: calc(100% - 170px); padding-right: 90px;">
-                            <div class="text-truncate"><a class="text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit. Proin interdum lacus eget ante tincidunt, sed faucibus nisl sodales</a></div>
-                            <div class="text-truncate"><a class="text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit. Proin interdum lacus eget ante tincidunt, sed faucibus nisl sodales</a></div>
+                            <div class="text-truncate"><a class="text-white text-uppercase font-weight-semi-bold"
+                                    href="">Lorem ipsum dolor sit amet elit. Proin interdum lacus eget ante tincidunt,
+                                    sed faucibus nisl sodales</a></div>
+                            <div class="text-truncate"><a class="text-white text-uppercase font-weight-semi-bold"
+                                    href="">Lorem ipsum dolor sit amet elit. Proin interdum lacus eget ante tincidunt,
+                                    sed faucibus nisl sodales</a></div>
                         </div>
                     </div>
                 </div>
@@ -265,11 +276,11 @@
         {{-- @foreach ($featurePost as $item )
         <div class="row">
             <div class="col-3">{{$item->title}}
-    </div>
-    <div class="col-3">{{$item->description}}</div>
-    <div class="col-3">{{$item->category}}</div>
-    </div>
-    @endforeach --}}
+            </div>
+            <div class="col-3">{{$item->description}}</div>
+            <div class="col-3">{{$item->category}}</div>
+        </div>
+        @endforeach --}}
     </div>
     <!-- Featured News Slider Start -->
     <div class="container-fluid pt-5 mb-3">
@@ -286,7 +297,8 @@
                                 href="">Business</a>
                             <a class="text-white" href=""><small>Jan 01, 2045</small></a>
                         </div>
-                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit
+                            amet elit...</a>
                     </div>
                 </div>
                 <div class="position-relative overflow-hidden" style="height: 300px;">
@@ -297,7 +309,8 @@
                                 href="">Business</a>
                             <a class="text-white" href=""><small>Jan 01, 2045</small></a>
                         </div>
-                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit
+                            amet elit...</a>
                     </div>
                 </div>
                 <div class="position-relative overflow-hidden" style="height: 300px;">
@@ -308,7 +321,8 @@
                                 href="">Business</a>
                             <a class="text-white" href=""><small>Jan 01, 2045</small></a>
                         </div>
-                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit
+                            amet elit...</a>
                     </div>
                 </div>
                 <div class="position-relative overflow-hidden" style="height: 300px;">
@@ -319,7 +333,8 @@
                                 href="">Business</a>
                             <a class="text-white" href=""><small>Jan 01, 2045</small></a>
                         </div>
-                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit
+                            amet elit...</a>
                     </div>
                 </div>
                 <div class="position-relative overflow-hidden" style="height: 300px;">
@@ -330,7 +345,8 @@
                                 href="">Business</a>
                             <a class="text-white" href=""><small>Jan 01, 2045</small></a>
                         </div>
-                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                        <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit
+                            amet elit...</a>
                     </div>
                 </div>
             </div>
@@ -352,33 +368,39 @@
                             </div>
                         </div>
                         @php use Carbon\Carbon;@endphp
-                        @foreach ($featurePost as $item )
+                        @foreach ($featurePost as $item)
 
-                        <div class="col-lg-6">
-                            <div class="position-relative mb-3">
-                                <img class="img-fluid w-100" src="img/news-700x435-1.jpg" style="object-fit: cover;">
-                                <div class="bg-white border border-top-0 p-4">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                            href="">{{$item->category}}</a>
-                                        <a class="text-body" href=""><small>{{Carbon::parse($item->created_at)->format('M d, Y') }}</small></a>
+                            <div class="col-lg-6">
+                                <div class="position-relative mb-3">
+                                    <img class="img-fluid w-100" src="img/news-700x435-1.jpg" style="object-fit: cover;">
+                                    <div class="bg-white border border-top-0 p-4">
+                                        <div class="mb-2">
+                                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                                href="#">{{$item->category}}</a>
+                                            <a class="text-body"
+                                                href=""><small>{{Carbon::parse($item->created_at)->format('M d, Y') }}</small></a>
+                                        </div>
+                                        <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold"
+                                            href="{{route('posts.page',$item->id)}}">{{$item->title}}</a>
+                                        <p class="m-0">{{Str::limit($item->description)}}</p>
                                     </div>
-                                    <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="">{{$item->title}}</a>
-                                    <p class="m-0">{{Str::limit($item->description)}}</p>
-                                </div>
-                                <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
-                                    <div class="d-flex align-items-center">
-                                        <img class="rounded-circle mr-2" src="img/user.jpg" width="25" height="25" alt="">
-                                        <small>John Doe</small>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <small class="ml-3"><i class="far fa-eye mr-2"></i>12345</small>
-                                        <small class="ml-3"><i class="far fa-comment mr-2"></i>123</small>
+                                    <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
+                                        <div class="d-flex align-items-center">
+                                            <img class="rounded-circle mr-2" src="img/user.jpg" width="25" height="25"
+                                                alt="">
+                                            <small>John Doe</small>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <small class="ml-3"><i class="far fa-eye mr-2"></i>{{$item->views}}</small>
+                                            <small class="ml-3"><i class="far fa-comment mr-2"></i>123</small>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        @endforeach
+                            @endforeach
+                            <!-- {{ $featurePost->links() }} -->
+                            {{-- {{$featurePost->link()}} --}}
+
 
                         <!-- <div class="col-lg-6">
                             <div class="position-relative mb-3">
@@ -457,44 +479,56 @@
                         <div class="col-lg-6">
                             <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
                                 <img class="img-fluid" src="img/news-110x110-1.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                <div
+                                    class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                     <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
+                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2"
+                                            href="">Business</a>
                                         <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                                     </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum
+                                        dolor sit amet elit...</a>
                                 </div>
                             </div>
                             <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
                                 <img class="img-fluid" src="img/news-110x110-2.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                <div
+                                    class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                     <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
+                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2"
+                                            href="">Business</a>
                                         <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                                     </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum
+                                        dolor sit amet elit...</a>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
                                 <img class="img-fluid" src="img/news-110x110-3.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                <div
+                                    class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                     <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
+                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2"
+                                            href="">Business</a>
                                         <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                                     </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum
+                                        dolor sit amet elit...</a>
                                 </div>
                             </div>
                             <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
                                 <img class="img-fluid" src="img/news-110x110-4.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                <div
+                                    class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                     <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
+                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2"
+                                            href="">Business</a>
                                         <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                                     </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum
+                                        dolor sit amet elit...</a>
                                 </div>
                             </div>
                         </div>
@@ -504,7 +538,8 @@
                         <div class="col-lg-12">
                             <div class="row news-lg mx-0 mb-3">
                                 <div class="col-md-6 h-100 px-0">
-                                    <img class="img-fluid h-100" src="img/news-700x435-5.jpg" style="object-fit: cover;">
+                                    <img class="img-fluid h-100" src="img/news-700x435-5.jpg"
+                                        style="object-fit: cover;">
                                 </div>
                                 <div class="col-md-6 d-flex flex-column border bg-white h-100 px-0">
                                     <div class="mt-auto p-4">
@@ -513,13 +548,15 @@
                                                 href="">Business</a>
                                             <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                                         </div>
-                                        <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                                        <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold"
+                                            href="">Lorem ipsum dolor sit amet elit...</a>
                                         <p class="m-0">Dolor lorem eos dolor duo et eirmod sea. Dolor sit magna
                                             rebum clita rebum dolor stet amet justo</p>
                                     </div>
                                     <div class="d-flex justify-content-between bg-white border-top mt-auto p-4">
                                         <div class="d-flex align-items-center">
-                                            <img class="rounded-circle mr-2" src="img/user.jpg" width="25" height="25" alt="">
+                                            <img class="rounded-circle mr-2" src="img/user.jpg" width="25" height="25"
+                                                alt="">
                                             <small>John Doe</small>
                                         </div>
                                         <div class="d-flex align-items-center">
@@ -533,44 +570,56 @@
                         <div class="col-lg-6">
                             <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
                                 <img class="img-fluid" src="img/news-110x110-1.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                <div
+                                    class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                     <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
+                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2"
+                                            href="">Business</a>
                                         <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                                     </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum
+                                        dolor sit amet elit...</a>
                                 </div>
                             </div>
                             <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
                                 <img class="img-fluid" src="img/news-110x110-2.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                <div
+                                    class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                     <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
+                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2"
+                                            href="">Business</a>
                                         <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                                     </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum
+                                        dolor sit amet elit...</a>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
                                 <img class="img-fluid" src="img/news-110x110-3.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                <div
+                                    class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                     <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
+                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2"
+                                            href="">Business</a>
                                         <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                                     </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum
+                                        dolor sit amet elit...</a>
                                 </div>
                             </div>
                             <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
                                 <img class="img-fluid" src="img/news-110x110-4.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                <div
+                                    class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                     <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
+                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2"
+                                            href="">Business</a>
                                         <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                                     </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum
+                                        dolor sit amet elit...</a>
                                 </div>
                             </div>
                         </div>
@@ -584,28 +633,40 @@
                             <h4 class="m-0 text-uppercase font-weight-bold">Follow Us</h4>
                         </div>
                         <div class="bg-white border border-top-0 p-3">
-                            <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #39569E;">
-                                <i class="fab fa-facebook-f text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                            <a href="" class="d-block w-100 text-white text-decoration-none mb-3"
+                                style="background: #39569E;">
+                                <i class="fab fa-facebook-f text-center py-4 mr-3"
+                                    style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
                                 <span class="font-weight-medium">12,345 Fans</span>
                             </a>
-                            <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #52AAF4;">
-                                <i class="fab fa-twitter text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                            <a href="" class="d-block w-100 text-white text-decoration-none mb-3"
+                                style="background: #52AAF4;">
+                                <i class="fab fa-twitter text-center py-4 mr-3"
+                                    style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
                                 <span class="font-weight-medium">12,345 Followers</span>
                             </a>
-                            <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #0185AE;">
-                                <i class="fab fa-linkedin-in text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                            <a href="" class="d-block w-100 text-white text-decoration-none mb-3"
+                                style="background: #0185AE;">
+                                <i class="fab fa-linkedin-in text-center py-4 mr-3"
+                                    style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
                                 <span class="font-weight-medium">12,345 Connects</span>
                             </a>
-                            <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #C8359D;">
-                                <i class="fab fa-instagram text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                            <a href="" class="d-block w-100 text-white text-decoration-none mb-3"
+                                style="background: #C8359D;">
+                                <i class="fab fa-instagram text-center py-4 mr-3"
+                                    style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
                                 <span class="font-weight-medium">12,345 Followers</span>
                             </a>
-                            <a href="" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #DC472E;">
-                                <i class="fab fa-youtube text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                            <a href="" class="d-block w-100 text-white text-decoration-none mb-3"
+                                style="background: #DC472E;">
+                                <i class="fab fa-youtube text-center py-4 mr-3"
+                                    style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
                                 <span class="font-weight-medium">12,345 Subscribers</span>
                             </a>
-                            <a href="" class="d-block w-100 text-white text-decoration-none" style="background: #055570;">
-                                <i class="fab fa-vimeo-v text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                            <a href="" class="d-block w-100 text-white text-decoration-none"
+                                style="background: #055570;">
+                                <i class="fab fa-vimeo-v text-center py-4 mr-3"
+                                    style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
                                 <span class="font-weight-medium">12,345 Followers</span>
                             </a>
                         </div>
@@ -628,18 +689,25 @@
                         <div class="section-title mb-0">
                             <h4 class="m-0 text-uppercase font-weight-bold">Tranding News</h4>
                         </div>
-                        <div class="bg-white border border-top-0 p-3">
-                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                <img class="img-fluid" src="img/news-110x110-1.jpg" alt="">
-                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
+                        @foreach ($featurePost as $item)
+                            <div class="bg-white border border-top-0 p-3">
+                                <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
+                                    <img class="img-fluid" src="img/news-110x110-1.jpg" alt="">
+                                    <div
+                                        class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                        <div class="mb-2">
+                                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2"
+                                                href="">Business</a>
+                                            <a class="text-body"
+                                                href=""><small>{{Carbon::parse($item->created_at)->format('M d, Y') }}</small></a>
+                                        </div>
+                                        <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum
+                                            dolor sit amet elit...</a>
                                     </div>
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
                                 </div>
-                            </div>
-                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
+                        @endforeach
+
+                            <!-- <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
                                 <img class="img-fluid" src="img/news-110x110-2.jpg" alt="">
                                 <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                     <div class="mb-2">
@@ -678,7 +746,7 @@
                                     </div>
                                     <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <!-- Popular News End -->
@@ -740,8 +808,10 @@
                 <h6 class="mt-4 mb-3 text-white text-uppercase font-weight-bold">Follow Us</h6>
                 <div class="d-flex justify-content-start">
                     <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i
+                            class="fab fa-linkedin-in"></i></a>
                     <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-instagram"></i></a>
                     <a class="btn btn-lg btn-secondary btn-lg-square" href="#"><i class="fab fa-youtube"></i></a>
                 </div>
@@ -750,24 +820,30 @@
                 <h5 class="mb-4 text-white text-uppercase font-weight-bold">Popular News</h5>
                 <div class="mb-3">
                     <div class="mb-2">
-                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
+                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2"
+                            href="">Business</a>
                         <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                     </div>
-                    <a class="small text-body text-uppercase font-weight-medium" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
+                    <a class="small text-body text-uppercase font-weight-medium" href="">Lorem ipsum dolor sit amet
+                        elit. Proin vitae porta diam...</a>
                 </div>
                 <div class="mb-3">
                     <div class="mb-2">
-                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
+                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2"
+                            href="">Business</a>
                         <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                     </div>
-                    <a class="small text-body text-uppercase font-weight-medium" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
+                    <a class="small text-body text-uppercase font-weight-medium" href="">Lorem ipsum dolor sit amet
+                        elit. Proin vitae porta diam...</a>
                 </div>
                 <div class="">
                     <div class="mb-2">
-                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Business</a>
+                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2"
+                            href="">Business</a>
                         <a class="text-body" href=""><small>Jan 01, 2045</small></a>
                     </div>
-                    <a class="small text-body text-uppercase font-weight-medium" href="">Lorem ipsum dolor sit amet elit. Proin vitae porta diam...</a>
+                    <a class="small text-body text-uppercase font-weight-medium" href="">Lorem ipsum dolor sit amet
+                        elit. Proin vitae porta diam...</a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">

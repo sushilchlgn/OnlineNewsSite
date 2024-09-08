@@ -60,7 +60,7 @@ use Illuminate\Support\Str;
                                             <input type="text" id="title" name="title" placeholder="Enter Your title" class="form-control mb-2">
 
                                             <label for="description">Description</label>
-                                            <textarea class="form-control" id="description" style="height:150px"  name="description" placeholder="Enter your description about news"></textarea>
+                                            <textarea class="form-control" id="description" style="height:150px" name="description" placeholder="Enter your description about news"></textarea>
 
 
 
@@ -98,6 +98,7 @@ use Illuminate\Support\Str;
                                     <th>TITLE</th>
                                     <th>DESCRIPTION</th>
                                     <th>CATEGORY</th>
+                                    <th>Views</th>
                                     <th>ACTIONS</th>
                                 </tr>
                             </thead>
@@ -108,6 +109,7 @@ use Illuminate\Support\Str;
                                     <td>{{ $item->title }}</td>
                                     <td>{{ Str::limit($item->description,120)}}</td>
                                     <td>{{$item->category}}</td>
+                                    <td>{{$item->views }} views</td>
                                     {{--
                                     <!-- <td>{{ $item->category->name }}</td> -->
                                     --}}
@@ -128,7 +130,7 @@ use Illuminate\Support\Str;
                                                             data-dismiss="modal">&times;</button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form action="{{ route('posts.update',$item->id) }}"
+                                                        <form action="{{ url('/posts/updates',$item->id) }}"
                                                             method="POST" enctype="multipart/form-data">
                                                             @csrf
                                                             @method('PUT')
@@ -143,8 +145,8 @@ use Illuminate\Support\Str;
                                                                 class="form-control mb-2">
                                                             <div class="mb-3">
                                                                 <label for="description">Description</label>
-                                                                <textarea class="form-control" id="description" style="height:150px" name="description" 
-                                                                 placeholder="Enter your description" value="{{$item->description}}">
+                                                                <textarea class="form-control" id="description" style="height:150px" name="description"
+                                                                    placeholder="Enter your description" value="{{$item->description}}">
                                                                 {{$item->description}}</textarea>
                                                             </div>
 

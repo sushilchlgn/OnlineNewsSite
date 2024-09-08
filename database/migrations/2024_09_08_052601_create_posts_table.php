@@ -15,8 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->string('category');
+            // $table->string('category');
+            $table->unsignedBigInteger('category_id');
             $table->timestamps();
+
+            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 

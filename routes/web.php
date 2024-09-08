@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -11,12 +13,22 @@ Route::get('/page', function () {
     return view('singalPage');
 });
 
-Route::get('/login', function () {
-    return view('welcome');
-});
+// Route::get('/login', function () {
+//     return view('welcome');
+// });
+
+Route::get('/category/create', [CategoryController::class,'index'])->name('category.show');
+Route::post('/category/create', [CategoryController::class, 'store'] )->name('category.store');
+Route::delete('/category', [CategoryController::class,'destroy'])->name('category.delete');
+
+Route::resource('categories', CategoryController::class);
+
+// Route::resource('posts', )
+// Route::resource('post', PostController::class);
+Route::resource('posts', PostController::class);
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('admin/dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -26,3 +38,5 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+

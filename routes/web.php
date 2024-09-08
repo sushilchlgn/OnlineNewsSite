@@ -17,11 +17,6 @@ Route::get('/page', function () {
     return view('singalPage');
 });
 
-
-Route::get('/category/create', [CategoryController::class, 'index'])->name('category.show');
-Route::post('/category/create', [CategoryController::class, 'store'])->name('category.store');
-Route::delete('/category', [CategoryController::class, 'destroy'])->name('category.delete');
-
 Route::resource('categories', CategoryController::class);
 
 Route::resource('posts', PostController::class);
@@ -29,9 +24,9 @@ Route::resource('posts', PostController::class);
 Route::get('/', [HomePageController::class, 'index']);
 
 // Route::get('/post/{id}',[SingalPageController::class,'show'])->name('posts.page');
-Route::get('/post/{id}', function($id){
+Route::get('/post/{id}', function ($id) {
     $posts = Post::find($id);
-    return view('singalPage' , compact('posts'));
+    return view('singalPage', compact('posts'));
 })->name('posts.page');
 
 Route::put('/posts/updates/{id}', function (Request $request, Post $post) {
@@ -47,7 +42,7 @@ Route::put('/posts/updates/{id}', function (Request $request, Post $post) {
     $post->description = $request->input('description');
     $post->category = $request->input('category');
     $post->save();
-    return  redirect()->route('/');
+    return redirect()->route('/');
 })->name('posts.updates');
 
 Route::get('/dashboard', function () {
@@ -58,6 +53,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/category/create', [CategoryController::class, 'index'])->name('category.show');
+    Route::post('/category/create', [CategoryController::class, 'store'])->name('category.store');
+    Route::delete('/category', [CategoryController::class, 'destroy'])->name('category.delete');
 });
+
+
 
 require __DIR__ . '/auth.php';

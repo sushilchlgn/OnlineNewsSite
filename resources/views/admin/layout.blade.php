@@ -250,6 +250,13 @@
 
                         </li>
 
+                        <li class="nav-item">
+                            <form action="{{route('logout')}}" method="post"></form>
+                            @csrf
+                            @method('POST')
+                            <button  type="submit" class="nav-link">Logout</button>
+                        </li>
+
 
 
                         {{-- class mngt --}}

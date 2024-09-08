@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,8 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-        return view("admin.posts.posts", compact("posts"));
+        $categories = category::all();
+        return view("admin.posts.posts", compact("posts","categories"));
     }
 
     /**
@@ -32,7 +34,7 @@ class PostController extends Controller
         $data = $request->validate([
             'title' => 'nullable',
             'description' => 'nullable',
-            'category' => 'required',
+            'category_id' => 'required',
         ]);
         // dd($data->title, $data->description, $data->category);
         // dd($data);
@@ -74,14 +76,14 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'category' => 'required',
+            'category_id' => 'required',
         ]);
         // dd($post);
         // $post->id = $request->id;
         $post = Post::findOrFail($post->id);
         $post->title = $request->input('title');
         $post->description = $request->input('description');
-        $post->category = $request->input('category');
+        $post->category = $request->input('category_id');
         $post->save();
     //     // dd($post);
         // $post->update($data);

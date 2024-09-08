@@ -13,9 +13,6 @@ Route::get('/page', function () {
     return view('singalPage');
 });
 
-// Route::get('/login', function () {
-//     return view('welcome');
-// });
 
 Route::get('/category/create', [CategoryController::class,'index'])->name('category.show');
 Route::post('/category/create', [CategoryController::class, 'store'] )->name('category.store');
@@ -23,8 +20,8 @@ Route::delete('/category', [CategoryController::class,'destroy'])->name('categor
 
 Route::resource('categories', CategoryController::class);
 
-// Route::resource('posts', )
-// Route::resource('post', PostController::class);
+Route::get('/posts/show', [PostController::class, 'show']);
+
 Route::resource('posts', PostController::class);
 
 Route::get('/dashboard', function () {

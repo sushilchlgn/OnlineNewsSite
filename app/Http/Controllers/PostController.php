@@ -12,8 +12,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy("created_at","desc");
-        return view("admin.posts.index", compact("posts"));
+        $posts = Post::all();
+        return view("admin.posts.posts", compact("posts"));
     }
 
     /**
@@ -36,9 +36,9 @@ class PostController extends Controller
         ]);
         // dd($data->title, $data->description, $data->category);
         // dd($data);
-        $post = Post::create($data);
+        $post =  Post::create($data);
         // dd($post);
-        return redirect()->route('posts.store')->with('success','Post created successfully');
+        return redirect()->route('posts.index')->with('success','Post created successfully');
     }
 
     /**
@@ -46,7 +46,10 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('admin.posts.show', compact('post'));
+
+        // $postses = Post::all();
+        // dd($post);
+        // return view('admin.posts');
         
     }
 

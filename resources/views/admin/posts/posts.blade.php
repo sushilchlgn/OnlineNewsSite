@@ -66,22 +66,22 @@ use Illuminate\Support\Str;
 
                                             <div class="mb-3">
                                                 <label for="category" class="form-label">Category</label>
-                                                <input type="text" id="category" name="category" placeholder="Enter category" class="form-control mb-2">
                                                 {{--
+                                                <input type="text" id="category" name="category" placeholder="Enter category" class="form-control mb-2">
+                                                --}}
                                                 <div class="input-group">
-                                                   <select class="form-select form-control selectpicker" id="category" name="category">
+                                                   <select class="form-select form-control selectpicker" id="category" name="category_id">
                                                         <option value="">Select Categories: </option>
-                                                        @foreach ($posts as $post)
-                                                        <option value="{{ $post->id }}">
-                                                {{ $post->name }}
+                                                        @foreach ($categories as $category)
+                                                        <option value="{{ $category->id }}">
+                                                {{ $category->name }}
                                                 </option>
                                                 @endforeach
                                                 </select>
-                                                <button type="button" class="btn btn-primary ml-2" data-toggle="modal" data-target="#addCategoryModal">
-                                                    Add Category
-                                                </button>
+                                                {{-- <button type="button" class="btn btn-primary ml-2" data-toggle="modal" data-target="#addCategoryModal">
+                                                    Add toe
+                                                </button> --}}
                                             </div>
-                                            --}}
                                     </div>
 
                                     <input type="submit" name="save" class="btn btn-success" value="Save Now" />
@@ -104,14 +104,13 @@ use Illuminate\Support\Str;
                             </thead>
                             <tbody>
                                 @foreach ($posts as $item)
-                                <!-- <p>{{route('posts.update', $item->id) }}</p> -->
                                 <tr>
                                     <td>{{ $item->title }}</td>
                                     <td>{{ Str::limit($item->description,120)}}</td>
-                                    <td>{{$item->category}}</td>
+                                    <td>{{ $item->category->name }}</td>
                                     <td>{{$item->views }} views</td>
                                     {{--
-                                    <!-- <td>{{ $item->category->name }}</td> -->
+                                    <td>{{$item->category}}</td>
                                     --}}
 
 
@@ -154,19 +153,19 @@ use Illuminate\Support\Str;
 
                                                             <label for="category">Category:</label>
 
-                                                            <input type="text" id="title"
+                                                            <!-- <input type="text" id="title"
                                                                 name="title" value="{{ $item->category}}"
                                                                 placeholder="Enter title"
-                                                                class="form-control mb-2">
+                                                                class="form-control mb-2"> -->
 
-                                                            {{--<select id="category" name="category"
+                                                            <select id="category" name="category"
                                                                     class="form-control mb-2">
                                                                     @foreach ($categories as $category)
                                                                     <option value="{{ $category->id }}">
                                                             {{ $category->name }}
                                                             </option>
                                                             @endforeach
-                                                            </select>--}}
+                                                            </select>
 
                                                             </select>
 

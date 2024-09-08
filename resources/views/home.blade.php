@@ -142,7 +142,6 @@
     </div>
     <!-- Navbar End -->
 
-
     <!-- Main News Slider Start -->
     <div class="container-fluid">
         <div class="row">
@@ -264,6 +263,15 @@
     <!-- Breaking News End -->
 
 
+    <div class="container" >
+       @foreach ($featurePost as $item )
+        <div class="row">
+            <div class="col-3">{{$item->title}}</div>
+            <div class="col-3">{{$item->description}}</div>
+            <div class="col-3">{{$item->category}}</div>
+        </div>
+        @endforeach
+    </div>
     <!-- Featured News Slider Start -->
     <div class="container-fluid pt-5 mb-3">
         <div class="container">

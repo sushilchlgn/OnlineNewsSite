@@ -103,7 +103,7 @@ use Illuminate\Support\Str;
                             </thead>
                             <tbody>
                                 @foreach ($posts as $item)
-                                <p>{{route('posts.update', $item->id) }}</p>
+                                <!-- <p>{{route('posts.update', $item->id) }}</p> -->
                                 <tr>
                                     <td>{{ $item->title }}</td>
                                     <td>{{ Str::limit($item->description,120)}}</td>
@@ -153,7 +153,7 @@ use Illuminate\Support\Str;
                                                             <label for="category">Category:</label>
 
                                                             <input type="text" id="title"
-                                                                name="title" value="{{ $item->category }}"
+                                                                name="title" value="{{ $item->category}}"
                                                                 placeholder="Enter title"
                                                                 class="form-control mb-2">
 
@@ -168,8 +168,7 @@ use Illuminate\Support\Str;
 
                                                             </select>
 
-                                                            <input type="submit" name="save"
-                                                                class="btn btn-success" value="Save Now" />
+                                                            <input type="submit" name="save" class="btn btn-success" value="Save Now" />
                                                         </form>
 
 

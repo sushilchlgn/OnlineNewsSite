@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -20,9 +21,11 @@ Route::delete('/category', [CategoryController::class,'destroy'])->name('categor
 
 Route::resource('categories', CategoryController::class);
 
-Route::get('/posts/show', [PostController::class, 'show']);
+// Route::get('/posts/show', [PostController::class, 'show']);
 
 Route::resource('posts', PostController::class);
+
+Route::get('/',[HomePageController::class,'index']);
 
 Route::get('/dashboard', function () {
     return view('admin/dashboard');

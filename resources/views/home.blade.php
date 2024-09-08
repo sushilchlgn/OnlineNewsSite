@@ -19,10 +19,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-     <link rel="stylesheet" href="{{asset('lib/owlcarousel/assets/owl.carousel.min.css')}}">
-     
-     <!-- Customized Bootstrap Stylesheet -->
-     <link rel="stylesheet" href=" {{asset('css/style.css')}} ">
+    <link rel="stylesheet" href="{{asset('lib/owlcarousel/assets/owl.carousel.min.css')}}">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link rel="stylesheet" href=" {{asset('css/style.css')}} ">
 </head>
 
 <body>
@@ -42,27 +42,25 @@
                             <a class="nav-link text-body small" href="#">Contact</a>
                         </li>
                         @if (Route::has('login'))
-                            <li class="nav-item d-flex  flex-1 justify-end">
-                                @auth
-                                    <a
-                                        href="{{ url('/dashboard') }}"
-                                        class="nav-link text-body small"
-                                    >
-                                        Dashboard
-                                    </a>
-                                @else
-                                    <a href="{{route('login')}}" class="border-right border-secondary nav-link text-body small">Login</a>
+                        <li class="nav-item d-flex  flex-1 justify-end">
+                            @auth
+                            <a
+                                href="{{ url('/dashboard') }}"
+                                class="nav-link text-body small">
+                                Dashboard
+                            </a>
+                            @else
+                            <a href="{{route('login')}}" class="border-right border-secondary nav-link text-body small">Login</a>
 
-                                    @if (Route::has('register'))
-                                        <a
-                                            href="{{ route('register') }}"
-                                            class="nav-link text-body small"
-                                        >
-                                            Register
-                                        </a>
-                                    @endif
-                                @endauth
-                            </li>
+                            @if (Route::has('register'))
+                            <a
+                                href="{{ route('register') }}"
+                                class="nav-link text-body small">
+                                Register
+                            </a>
+                            @endif
+                            @endauth
+                        </li>
                         @endif
                     </ul>
                 </nav>
@@ -263,14 +261,15 @@
     <!-- Breaking News End -->
 
 
-    <div class="container" >
-       @foreach ($featurePost as $item )
+    <div class="container">
+        {{-- @foreach ($featurePost as $item )
         <div class="row">
-            <div class="col-3">{{$item->title}}</div>
-            <div class="col-3">{{$item->description}}</div>
-            <div class="col-3">{{$item->category}}</div>
-        </div>
-        @endforeach
+            <div class="col-3">{{$item->title}}
+    </div>
+    <div class="col-3">{{$item->description}}</div>
+    <div class="col-3">{{$item->category}}</div>
+    </div>
+    @endforeach --}}
     </div>
     <!-- Featured News Slider Start -->
     <div class="container-fluid pt-5 mb-3">
@@ -352,18 +351,20 @@
                                 <a class="text-secondary font-weight-medium text-decoration-none" href="">View All</a>
                             </div>
                         </div>
+                        @php use Carbon\Carbon;@endphp
+                        @foreach ($featurePost as $item )
+
                         <div class="col-lg-6">
                             <div class="position-relative mb-3">
                                 <img class="img-fluid w-100" src="img/news-700x435-1.jpg" style="object-fit: cover;">
                                 <div class="bg-white border border-top-0 p-4">
                                     <div class="mb-2">
                                         <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                            href="">Business</a>
-                                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
+                                            href="">{{$item->category}}</a>
+                                        <a class="text-body" href=""><small>{{Carbon::parse($item->created_at)->format('M d, Y') }}</small></a>
                                     </div>
-                                    <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="">Lorem ipsum dolor sit amet elit...</a>
-                                    <p class="m-0">Dolor lorem eos dolor duo et eirmod sea. Dolor sit magna
-                                        rebum clita rebum dolor stet amet justo</p>
+                                    <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="">{{$item->title}}</a>
+                                    <p class="m-0">{{Str::limit($item->description)}}</p>
                                 </div>
                                 <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
                                     <div class="d-flex align-items-center">
@@ -377,7 +378,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                        @endforeach
+
+                        <!-- <div class="col-lg-6">
                             <div class="position-relative mb-3">
                                 <img class="img-fluid w-100" src="img/news-700x435-2.jpg" style="object-fit: cover;">
                                 <div class="bg-white border border-top-0 p-4">
@@ -401,11 +404,11 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-12 mb-3">
+                        </div> -->
+                        <!-- <div class="col-lg-12 mb-3">
                             <a href=""><img class="img-fluid w-100" src="img/ads-728x90.png" alt=""></a>
-                        </div>
-                        <div class="col-lg-6">
+                        </div> -->
+                        <!-- <div class="col-lg-6">
                             <div class="position-relative mb-3">
                                 <img class="img-fluid w-100" src="img/news-700x435-3.jpg" style="object-fit: cover;">
                                 <div class="bg-white border border-top-0 p-4">
@@ -450,7 +453,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-lg-6">
                             <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
                                 <img class="img-fluid" src="img/news-110x110-1.jpg" alt="">
@@ -839,7 +842,7 @@
     <script src="{{asset('lib/owlcarousel/owl.carousel.min.js')}}"></script>
 
     <!-- Template Javascript -->
-     <script src="{{asset('js/main.js')}}"></script>
+    <script src="{{asset('js/main.js')}}"></script>
 </body>
 
 </html>

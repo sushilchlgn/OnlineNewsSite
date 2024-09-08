@@ -67,13 +67,14 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $request->validate([
+        $data= $request->validate([
             'title'=> 'required',
             'description'=> 'required',
             'category'=> 'required',
         ]);
+        dd($data);
         $post->update($request->all());
-        return redirect()->route('posts.update')->with('success','product updated successfully');
+        return redirect()->route('posts')->with('success','product updated successfully');
     }
 
     /**
@@ -81,6 +82,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()->route('posts.index')->with('success','Post deleted successfully');
     }
 }

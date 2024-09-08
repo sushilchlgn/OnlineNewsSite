@@ -21,8 +21,6 @@ Route::delete('/category', [CategoryController::class,'destroy'])->name('categor
 
 Route::resource('categories', CategoryController::class);
 
-// Route::get('/posts/show', [PostController::class, 'show']);
-
 Route::resource('posts', PostController::class);
 
 Route::get('/',[HomePageController::class,'index']);

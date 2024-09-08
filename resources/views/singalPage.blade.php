@@ -180,7 +180,7 @@
                         <div class="bg-white border border-top-0 p-4">
                             <div class="mb-3">
                                 <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                    href="">{{$posts->category}}</a>
+                                    href="">{{$posts->category->name}}</a>
                                 <a class="text-body" href="">Jan 01, 2045</a>
                             </div>
                             <h1 class="mb-3 text-secondary text-uppercase font-weight-bold">{{$posts->title}}</h1>

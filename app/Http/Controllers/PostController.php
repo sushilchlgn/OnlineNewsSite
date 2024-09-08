@@ -35,7 +35,7 @@ class PostController extends Controller
             'category'=> 'required',
         ]);
         // dd($data->title, $data->description, $data->category);
-        dd($data);
+        // dd($data);
         $post =  Post::create($data);
         // dd($post);
         return redirect()->route('posts.index')->with('success','Post created successfully');
@@ -78,7 +78,7 @@ class PostController extends Controller
         $post->description = $request->input('description');
         $post->category = $request->input('category');
         $post->save();
-        dd($post);
+        // dd($post);
         // $post->update($data);
     
         return redirect()->route('posts.index')->with('success', 'Post updated successfully');

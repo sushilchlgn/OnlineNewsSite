@@ -10,7 +10,7 @@ class HomePageController extends Controller
     //
     public function index(){
         $post = Post::all();
-        $featurePost = Post::orderBy("created_at","desc")->paginate(10);
+        $featurePost = Post::orderBy("created_at","desc")->paginate(4);
         return view("home", compact("post","featurePost"));
     }
 }

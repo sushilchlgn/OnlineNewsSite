@@ -67,14 +67,16 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $data= $request->validate([
-            'title'=> 'required',
-            'description'=> 'required',
-            'category'=> 'required',
+        $data = $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'category' => 'required',
         ]);
+    
         dd($data);
-        $post->update($request->all());
-        return redirect()->route('posts')->with('success','product updated successfully');
+        $post->update($data);
+    
+        return redirect()->route('posts.index')->with('success', 'Post updated successfully');
     }
 
     /**

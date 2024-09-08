@@ -60,7 +60,7 @@ use Illuminate\Support\Str;
                                             <input type="text" id="title" name="title" placeholder="Enter Your title" class="form-control mb-2">
 
                                             <label for="description">Description</label>
-                                            <textarea class="form-control" id="description" style="height:150px" name="description" placeholder="Enter your description about news"></textarea>
+                                            <textarea class="form-control" id="description" style="height:150px"  name="description" placeholder="Enter your description about news"></textarea>
 
 
 
@@ -103,9 +103,10 @@ use Illuminate\Support\Str;
                             </thead>
                             <tbody>
                                 @foreach ($posts as $item)
+                                <p>{{route('posts.update', $item->id) }}</p>
                                 <tr>
                                     <td>{{ $item->title }}</td>
-                                    <td>{{ Str::limit($item->description,30)}}</td>
+                                    <td>{{ Str::limit($item->description,120)}}</td>
                                     <td>{{$item->category}}</td>
                                     {{--
                                     <!-- <td>{{ $item->category->name }}</td> -->
@@ -143,9 +144,8 @@ use Illuminate\Support\Str;
                                                             <div class="mb-3">
                                                                 <label for="description">Description</label>
                                                                 <textarea class="form-control" id="description" style="height:150px" name="description" 
-                                                                 placeholder="Enter your description" value="{{$item->title}}">
+                                                                 placeholder="Enter your description" value="{{$item->description}}">
                                                                 {{$item->description}}</textarea>
-
                                                             </div>
 
 

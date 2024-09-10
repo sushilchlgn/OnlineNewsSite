@@ -52,8 +52,7 @@
 
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
-                            class="fas fa-bars"></i></a>
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="" class="nav-link">Home</a>
@@ -132,8 +131,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true"
-                        href="#" role="button">
+                    <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#"
+                        role="button">
                         <i class="fas fa-th-large"></i>
                     </a>
                 </li>
@@ -251,10 +250,11 @@
                         </li>
 
                         <li class="nav-item">
-                            <form action="{{route('logout')}}" method="post"></form>
-                            @csrf
-                            @method('POST')
-                            <button  type="submit" class="nav-link">Logout</button>
+                            <form action="{{ route('logout') }}" method="post">
+                                @csrf
+                                @method('POST')
+                                <button type="submit" class="nav-link">Logout</button>
+                            </form>
                         </li>
 
 
@@ -271,14 +271,14 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Add Membership</p>
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Membership</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>View Class List</p>
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>View Class List</p>
                                     </a>
 
                                 </li>
@@ -301,14 +301,14 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Class Schedule</p>
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Class Schedule</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>View Fee Head</p>
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>View Fee Head</p>
                                     </a>
 
                                 </li>
@@ -331,14 +331,14 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Add FeeStructure</p>
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add FeeStructure</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p> Billing</p>
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> Billing</p>
                                     </a>
 
                                 </li>
@@ -357,14 +357,14 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Setting</p>
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Setting</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Setting</p>
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Setting</p>
                                     </a>
 
                                 </li>
@@ -386,14 +386,14 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Add Announcement</p>
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Announcement</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>View Announcement List</p>
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>View Announcement List</p>
                                     </a>
 
                                 </li>
@@ -417,14 +417,14 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Add Subject to Assign</p>
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Subject to Assign</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>View Assigned Subject</p>
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>View Assigned Subject</p>
                                     </a>
 
                                 </li>
@@ -446,14 +446,14 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Add Record</p>
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Record</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>View Record</p>
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>View Record</p>
                                     </a>
 
                                 </li>
@@ -493,7 +493,8 @@
 
     <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
 
-    {{-- <script>
+    {{--
+    <script>
         $.widget.bridge('uibutton', $.ui.button)
     </script> --}}
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+@php use Carbon\Carbon;@endphp
 
 <head>
     <meta charset="utf-8">
@@ -172,19 +173,18 @@
             <div class="row">
                 <div class="col-lg-8">
                     <!-- News Detail Start -->
-                    {{--@foreach ($post as $item)
-
-                    @endforeach--}}
                     <div class="position-relative mb-3">
                         <img class="img-fluid w-100" src="img/news-700x435-1.jpg" style="object-fit: cover;">
                         <div class="bg-white border border-top-0 p-4">
                             <div class="mb-3">
                                 <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
                                     href="">{{$posts->category->name}}</a>
-                                <a class="text-body" href="">Jan 01, 2045</a>
+                                <a class="text-body"
+                                    href="">{{Carbon::parse($posts->created_at)->format('M d, Y') }}</a>
                             </div>
                             <h1 class="mb-3 text-secondary text-uppercase font-weight-bold">{{$posts->title}}</h1>
-                            <p>{{$posts->description}}</p>
+                            <p>{!! nl2br(e($posts->description)) !!}</p>
+                            <!-- <pre>{{ $posts->description }}</pre> -->
                         </div>
                         <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
                             <div class="d-flex align-items-center">

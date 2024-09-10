@@ -32,10 +32,11 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'title' => 'nullable',
-            'description' => 'nullable',
-            'category_id' => 'required',
+            'title' => 'required|string|max:255',
+            'description' => 'required|text',
+            'category_id' => 'required|exists:categories,id',
         ]);
+        
         // dd($data->title, $data->description, $data->category);
         // dd($data);
         $post =  Post::create($data);
@@ -73,20 +74,19 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'category_id' => 'required',
+        $data = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'category_id' => 'required|exists:categories,id',
         ]);
-        // dd($post);
-        // $post->id = $request->id;
+        
         $post = Post::findOrFail($post->id);
-        $post->title = $request->input('title');
-        $post->description = $request->input('description');
-        $post->category = $request->input('category_id');
-        $post->save();
-    //     // dd($post);
-        // $post->update($data);
+        // $post->title = $request->input('title');
+        // $post->description = $request->input('description');
+        // $post->category_id = $request->input('category_id');
+        // $post->save();
+        // dd($post);
+        $post->update($data);
 
         return redirect()->route('posts.index')->with('success', 'Post updated successfully');
     }

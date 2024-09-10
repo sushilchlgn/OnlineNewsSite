@@ -1,5 +1,5 @@
 @php
-use Illuminate\Support\Str;
+    use Illuminate\Support\Str;
 @endphp
 @extends('admin.layout')
 
@@ -23,19 +23,20 @@ use Illuminate\Support\Str;
                             <h2 class="ml-2 menu-title">Posts</h2>
                             <div>
                                 @if (session('success'))
-                                <div class="alert alert-success bg-success h3 text-white rounded fw-bolder fs-1">
-                                    {{ session('success') }}
-                                </div>
+                                    <div class="alert alert-success bg-success h3 text-white rounded fw-bolder fs-1">
+                                        {{ session('success') }}
+                                    </div>
                                 @endif
                                 @if (session('error'))
-                                <div class="alert alert-danger bg-danger h3 text-white rounded fw-bolder fs-1">
-                                    {{ session('error') }}
-                                </div>
+                                    <div class="alert alert-danger bg-danger h3 text-white rounded fw-bolder fs-1">
+                                        {{ session('error') }}
+                                    </div>
                                 @endif
                             </div>
                             <div class="navbar d-flex justify-content-end">
-                                <button type="button" data-toggle="modal" class="btn btn-success"
-                                    data-target="#addNewProduct">Add New</button>
+                            <button type="button" data-toggle="modal" data-target="#addNewProduct" class="btn btn-success">
+                                Add New
+                            </button>
                             </div>
                         </div>
 
@@ -57,150 +58,151 @@ use Illuminate\Support\Str;
                                             @method("POST")
 
                                             <label for="title">Title</label>
-                                            <input type="text" id="title" name="title" placeholder="Enter Your title" class="form-control mb-2">
+                                            <input type="text" id="title" name="title" placeholder="Enter Your title"
+                                                class="form-control mb-2">
 
                                             <label for="description">Description</label>
-                                            <textarea class="form-control" id="description" style="height:150px" name="description" placeholder="Enter your description about news"></textarea>
+                                            <textarea class="form-control" id="description" style="height:150px"
+                                                name="description"
+                                                placeholder="Enter your description about news"></textarea>
 
 
 
                                             <div class="mb-3">
                                                 <label for="category" class="form-label">Category</label>
                                                 {{--
-                                                <input type="text" id="category" name="category" placeholder="Enter category" class="form-control mb-2">
+                                                <input type="text" id="category" name="category"
+                                                    placeholder="Enter category" class="form-control mb-2">
                                                 --}}
                                                 <div class="input-group">
-                                                   <select class="form-select form-control selectpicker" id="category" name="category_id">
+                                                    <select class="form-select form-control selectpicker" id="category"
+                                                        name="category_id">
                                                         <option value="">Select Categories: </option>
                                                         @foreach ($categories as $category)
-                                                        <option value="{{ $category->id }}">
-                                                {{ $category->name }}
-                                                </option>
-                                                @endforeach
-                                                </select>
-                                                {{-- <button type="button" class="btn btn-primary ml-2" data-toggle="modal" data-target="#addCategoryModal">
-                                                    Add toe
-                                                </button> --}}
+                                                            <option value="{{ $category->id }}">
+                                                                {{ $category->name }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                    {{-- <button type="button" class="btn btn-primary ml-2"
+                                                        data-toggle="modal" data-target="#addCategoryModal">
+                                                        Add toe
+                                                    </button> --}}
+                                                </div>
                                             </div>
-                                    </div>
 
-                                    <input type="submit" name="save" class="btn btn-success" value="Save Now" />
-                                    </form>
+                                            <input type="submit" name="save" class="btn btn-success" value="Save Now" />
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="card-body">
-                        <table id="example1" class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>TITLE</th>
-                                    <th>DESCRIPTION</th>
-                                    <th>CATEGORY</th>
-                                    <th>Views</th>
-                                    <th>ACTIONS</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($posts as $item)
-                                <tr>
-                                    <td>{{ $item->title }}</td>
-                                    <td>{{ Str::limit($item->description,120)}}</td>
-                                    <td>{{ $item->category->name }}</td>
-                                    <td>{{$item->views }} views</td>
-                                    {{--
-                                    <td>{{$item->category}}</td>
-                                    --}}
+                        <div class="card-body">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>TITLE</th>
+                                        <th>DESCRIPTION</th>
+                                        <th>CATEGORY</th>
+                                        <th>Views</th>
+                                        <th>ACTIONS</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($posts as $item)
+                                        <tr>
+                                            <td>{{ $item->title }}</td>
+                                            <td>{{ Str::limit($item->description, 120)}}</td>
+                                            <td>{{ $item->category->name }}</td>
+                                            <td>{{$item->views }} views</td>
+                                            {{--
+                                            <td>{{$item->category}}</td>
+                                            --}}
 
 
-                                    <td class="font-weight-medium">
-                                        <button type="button" class="btn" title="Edit" data-toggle="modal"
-                                            data-target="#updateModel{{ $item->id }}">
-                                            <i class="fas fa-edit fa-lg"></i>
-                                        </button>
+                                            <td class="font-weight-medium">
+                                                <button type="button" class="btn" title="Edit" data-toggle="modal"
+                                                    data-target="#updateModel{{ $item->id }}">
+                                                    <i class="fas fa-edit fa-lg"></i>
+                                                </button>
 
-                                        <div class="modal" id="updateModel{{ $item->id }}">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h4 class="modal-title">Update Posts</h4>
-                                                        <button type="button" class="close"
-                                                            data-dismiss="modal">&times;</button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <form action="{{ url('/posts/updates',$item->id) }}"
-                                                            method="POST" enctype="multipart/form-data">
-                                                            @csrf
-                                                            @method('PUT')
-
-                                                            <input type="hidden" name="id"
-                                                                value="{{ $item->id }}">
-
-                                                            <label for="title">Title</label>
-                                                            <input type="text" id="title"
-                                                                name="title" value="{{ $item->title }}"
-                                                                placeholder="Enter title"
-                                                                class="form-control mb-2">
-                                                            <div class="mb-3">
-                                                                <label for="description">Description</label>
-                                                                <textarea class="form-control" id="description" style="height:150px" name="description"
-                                                                    placeholder="Enter your description" value="{{$item->description}}">
-                                                                {{$item->description}}</textarea>
+                                                <div class="modal" id="updateModel{{ $item->id }}">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title">Update Posts</h4>
+                                                                <button type="button" class="close"
+                                                                    data-dismiss="modal">&times;</button>
                                                             </div>
+                                                            <div class="modal-body">
+                                                                <form action="{{ route('posts.update', $item->id) }}"
+                                                                    method="POST" enctype="multipart/form-data">
+                                                                    @csrf
+                                                                    @method('PUT')
+
+                                                                    <input type="hidden" name="id" value="{{ $item->id }}">
+
+                                                                    <label for="title">Title</label>
+                                                                    <input type="text" id="title" name="title"
+                                                                        value="{{ $item->title }}" placeholder="Enter title"
+                                                                        class="form-control mb-2">
+                                                                    <div class="mb-3">
+                                                                        <label for="description">Description</label>
+                                                                        <textarea class="form-control" id="description"
+                                                                            style="height:150px" name="description"
+                                                                            placeholder="Enter your description"
+                                                                            value="{{$item->description}}">
+                                                                    {{$item->description}}</textarea>
+                                                                    </div>
 
 
 
-                                                            <label for="category">Category:</label>
+                                                                    <label for="category">Category:</label>
 
-                                                            <!-- <input type="text" id="title"
-                                                                name="title" value="{{ $item->category}}"
-                                                                placeholder="Enter title"
-                                                                class="form-control mb-2"> -->
+                                                                    <select id="category" name="category_id"
+                                                                        class="form-control mb-2">
+                                                                        @foreach ($categories as $category)
+                                                                            <option value="{{ $category->id }}" {{ $category->id == $item->category_id ? 'selected' : '' }}>
+                                                                                {{ $category->name }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
 
-                                                            <select id="category" name="category"
-                                                                    class="form-control mb-2">
-                                                                    @foreach ($categories as $category)
-                                                                    <option value="{{ $category->id }}">
-                                                            {{ $category->name }}
-                                                            </option>
-                                                            @endforeach
-                                                            </select>
 
-                                                            </select>
-
-                                                            <input type="submit" name="save" class="btn btn-success" value="Save Now" />
-                                                        </form>
+                                                                    <input type="submit" name="save" class="btn btn-success"
+                                                                        value="Save Now" />
+                                                                </form>
 
 
 
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <a href="#" class="text-danger" onclick="event.preventDefault();  
-                                                document.getElementById('delete-form-{{ $item->id }}').submit();">
-                                            <i class="fas fa-trash fa-lg"></i>
-                                        </a>
+                                                <a href="#" class="text-danger" onclick="event.preventDefault();  
+                                                    document.getElementById('delete-form-{{ $item->id }}').submit();">
+                                                    <i class="fas fa-trash fa-lg"></i>
+                                                </a>
 
-                                        <form id="delete-form-{{ $item->id }}"
-                                            action="{{ route('posts.destroy', $item->id) }}" method="POST"
-                                            style="display: none;">
-                                            @csrf
-                                            @method('DELETE')
-                                        </form>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                                <form id="delete-form-{{ $item->id }}"
+                                                    action="{{ route('posts.destroy', $item->id) }}" method="POST"
+                                                    style="display: none;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
                     </div>
-                    <!-- /.card-body -->
                 </div>
             </div>
         </div>
-</div>
-</section>
+    </section>
 </div>
 
 <!-- Add Category Modal -->
@@ -263,7 +265,7 @@ use Illuminate\Support\Str;
         document.getElementById('dynamic-variants').appendChild(container);
     }
 
-    $(function() {
+    $(function () {
         bsCustomFileInput.init();
     });
 </script>

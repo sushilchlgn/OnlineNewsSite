@@ -13,9 +13,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::where('user_id', auth()->id())->get();
         $categories = category::all();
-        return view("admin.posts.posts", compact("posts","categories"));
+        return view("admin.posts.posts", compact("posts", "categories"));
     }
 
     /**
@@ -33,14 +33,12 @@ class PostController extends Controller
     {
         $data = $request->validate([
             'title' => 'required|string|max:255',
-            'description' => 'required|text',
+            'description' => 'required|string',
             'category_id' => 'required|exists:categories,id',
         ]);
-        
-        // dd($data->title, $data->description, $data->category);
-        // dd($data);
-        $post =  Post::create($data);
-        // dd($post);
+
+        $data['user_id'] = auth()->id();
+        Post::create($data);
         return redirect()->route('posts.index')->with('success', 'Post created successfully');
     }
 
@@ -79,7 +77,7 @@ class PostController extends Controller
             'description' => 'required|string',
             'category_id' => 'required|exists:categories,id',
         ]);
-        
+
         $post = Post::findOrFail($post->id);
         // $post->title = $request->input('title');
         // $post->description = $request->input('description');

@@ -21,6 +21,7 @@ Route::get('/', [HomePageController::class, 'index']);
 Route::resource('categories', CategoryController::class);
 
 Route::post('posts/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
+Route::get('/posts/comments',[CommentController::class,'index'])->name('comments.show');
 
 
 

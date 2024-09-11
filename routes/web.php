@@ -42,7 +42,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/category/create', [CategoryController::class, 'store'])->name('category.store');
     Route::delete('/category', [CategoryController::class, 'destroy'])->name('category.delete');
     Route::post('posts/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
+    // route::post('/posts/{post}/comments', [CommentController::class, 'store'])->name('comments.store')->middleware('auth');
     Route::get('/posts/comments', [CommentController::class, 'index'])->name('comments.show');
+    Route::post('/comments/{comment}/reply', [CommentController::class, 'reply'])->name('comments.reply')->middleware('auth');
 });
 
 

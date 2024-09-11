@@ -20,9 +20,6 @@ Route::get('/', [HomePageController::class, 'index']);
 
 Route::resource('categories', CategoryController::class);
 
-Route::post('posts/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
-Route::get('/posts/comments',[CommentController::class,'index'])->name('comments.show');
-
 
 
 // Route::get('/post/{id}',[SingalPageController::class,'show'])->name('posts.page');
@@ -44,6 +41,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/category/create', [CategoryController::class, 'index'])->name('category.show');
     Route::post('/category/create', [CategoryController::class, 'store'])->name('category.store');
     Route::delete('/category', [CategoryController::class, 'destroy'])->name('category.delete');
+    Route::post('posts/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
+    Route::get('/posts/comments', [CommentController::class, 'index'])->name('comments.show');
 });
 
 

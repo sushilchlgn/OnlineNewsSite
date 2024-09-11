@@ -200,67 +200,73 @@
                     <!-- News Detail End -->
 
                     <!-- Comment List Start -->
-                    {{-- @foreach ($posts->comments as $comment)
-                    <div>
-                        <p>{{ $comment->user->name }}: {{ $comment->body }}</p>
-                        @if ($comment->replies)
-                        @foreach ($comment->replies as $reply)
-                        <div style="margin-left: 20px;">
-                            <p>{{ $reply->user->name }}: {{ $reply->body }}</p>
-                        </div>
-                        @endforeach
-                        @endif
-                    </div>
-
-                    <!-- Reply form -->
-                    <form action="{{ route('comments.store', $post->id) }}" method="POST">
-                        @csrf
-                        <textarea name="body"></textarea>
-                        <input type="hidden" name="parent_id" value="{{ $comment->id }}">
-                        <button type="submit">Reply</button>
-                    </form>
-                    @endforeach --}}
-
                     <div class="mb-3">
                         <div class="section-title mb-0">
                             <h4 class="m-0 text-uppercase font-weight-bold">3 Comments</h4>
                         </div>
-                        <div class="bg-white border border-top-0 p-4">
-                            @if ($posts->comments && $posts->comments->count() > 0)
+                        @if ($posts->comments && $posts->comments->count() > 0)
+                            <div class="bg-white border border-top-0 p-4">
                                 @foreach ($posts->comments as $comment)
-                                    <div class="media">
-                                        <img src="{{asset('img/user.jpg')}}" alt="Image" class="img-fluid mr-3 mt-1"
-                                            style="width: 45px; border-radius:50%;">
+                                    <div class="media mb-4">
+                                        <img src="img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
                                         <div class="media-body">
                                             <h6><a class="text-secondary font-weight-bold" href="">{{$comment->user->name}}</a>
                                                 <small><i>{{Carbon::parse($comment->created_at)->format('d M, Y') }}</i></small>
                                             </h6>
                                             <p>{{$comment->body}}</p>
-                                            <button class="btn btn-sm btn-outline-secondary">Reply</button>
+
+                                            <button class="btn btn-sm btn-outline-secondary"
+                                                onclick="toggleReplyForm({{ $comment->id }})">Reply</button>
+
+                                            <!-- Reply Form (Initially Hidden) -->
+                                            <form id="replyForm-{{ $comment->id }}" class="mt-3" style="display: none;"
+                                                action="{{ route('comments.store', $posts->id) }}" method="POST">
+                                                @csrf
+                                                <div class="form-group">
+                                                    <textarea class="form-control" name="body" rows="3"
+                                                        placeholder="Your Reply"></textarea>
+                                                    <input type="hidden" name="parent_id" value="{{ $comment->id }}">
+                                                </div>
+                                                <button type="submit" class="btn btn-primary btn-sm">Submit Reply</button>
+                                            </form>
+
                                             @if ($comment->replies)
                                                 @foreach ($comment->replies as $reply)
                                                     <div class="media mt-4">
                                                         <img src="img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1"
                                                             style="width: 45px;">
                                                         <div class="media-body">
-                                                            <h6><a class="text-secondary font-weight-bold" href="">{{$reply}}</a>
-                                                                <small><i>{{reply}}</i></small>
+                                                            <h6><a class="text-secondary font-weight-bold"
+                                                                    href="">{{ $reply->user->name }}</a>
+                                                                <small><i>{{Carbon::parse($reply->created_at)->format('d M, Y') }}</i></small>
                                                             </h6>
-                                                            <p>{{$reply}}</p>
-                                                            <button class="btn btn-sm btn-outline-secondary">Reply</button>
+                                                            <p>{{ $reply->body }}</p>
+                                                            <button class="btn btn-sm btn-outline-secondary"
+                                                                onclick="toggleReplyForm({{ $reply->id }})">Reply</button>
+
+                                                            <!-- Nested Reply Form (Initially Hidden) -->
+                                                            <form id="replyForm-{{ $reply->id }}" class="mt-3" style="display: none;"
+                                                                action="{{ route('comments.store', $posts->id) }}" method="POST">
+                                                                @csrf
+                                                                <div class="form-group">
+                                                                    <textarea class="form-control" name="body" rows="3"
+                                                                        placeholder="Your Reply"></textarea>
+                                                                    <input type="hidden" name="parent_id" value="{{ $reply->id }}">
+                                                                </div>
+                                                                <button type="submit" class="btn btn-primary btn-sm">Submit
+                                                                    Reply</button>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 @endforeach
                                             @endif
-
-
                                         </div>
                                     </div>
                                 @endforeach
-                            @else
-                                <p>No comments.</p>
-                            @endif
-                        </div>
+                            </div>
+                        @else
+                            <p>No Comments</p>
+                        @endif
                     </div>
                     <!-- Comment List End -->
 
@@ -286,6 +292,8 @@
                     </div>
                     <!-- Comment Form End -->
                 </div>
+
+
 
                 <div class="col-lg-4">
                     <!-- Social Follow Start -->
@@ -587,6 +595,17 @@
 
     <!-- Template Javascript -->
     <script src="{{asset('js/main.js')}}"></script>
+    <!-- JavaScript to toggle reply form visibility -->
+    <script>
+        function toggleReplyForm(commentId) {
+            var form = document.getElementById('replyForm-' + commentId);
+            if (form.style.display === 'none' || form.style.display === '') {
+                form.style.display = 'block';
+            } else {
+                form.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 
 </html>

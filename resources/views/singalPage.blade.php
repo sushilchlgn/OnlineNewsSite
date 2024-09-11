@@ -200,25 +200,25 @@
                     <!-- News Detail End -->
 
                     <!-- Comment List Start -->
-                   {{-- @foreach ($posts->comments as $comment)
-                        <div>
-                            <p>{{ $comment->user->name }}: {{ $comment->body }}</p>
-                            @if ($comment->replies)
-                                @foreach ($comment->replies as $reply)
-                                    <div style="margin-left: 20px;">
-                                        <p>{{ $reply->user->name }}: {{ $reply->body }}</p>
-                                    </div>
-                                @endforeach
-                            @endif
+                    {{-- @foreach ($posts->comments as $comment)
+                    <div>
+                        <p>{{ $comment->user->name }}: {{ $comment->body }}</p>
+                        @if ($comment->replies)
+                        @foreach ($comment->replies as $reply)
+                        <div style="margin-left: 20px;">
+                            <p>{{ $reply->user->name }}: {{ $reply->body }}</p>
                         </div>
+                        @endforeach
+                        @endif
+                    </div>
 
-                        <!-- Reply form -->
-                        <form action="{{ route('comments.store', $post->id) }}" method="POST">
-                            @csrf
-                            <textarea name="body"></textarea>
-                            <input type="hidden" name="parent_id" value="{{ $comment->id }}">
-                            <button type="submit">Reply</button>
-                        </form>
+                    <!-- Reply form -->
+                    <form action="{{ route('comments.store', $post->id) }}" method="POST">
+                        @csrf
+                        <textarea name="body"></textarea>
+                        <input type="hidden" name="parent_id" value="{{ $comment->id }}">
+                        <button type="submit">Reply</button>
+                    </form>
                     @endforeach --}}
 
                     <div class="mb-3">
@@ -227,36 +227,39 @@
                         </div>
                         <div class="bg-white border border-top-0 p-4">
                             @if ($posts->comments && $posts->comments->count() > 0)
-                            @foreach ($posts->comments as $comment )
-                                {{$comment}}
-                            @endforeach
-                            @else
-                            <p>No comments.</p>
-                            @endif
-                            <div class="media">
-                                <img src="{{asset('img/user.jpg')}}" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px; border-radius:50%;">
-                                <div class="media-body">
-                                    <h6><a class="text-secondary font-weight-bold" href="">John Doe</a> <small><i>01 Jan
-                                                2045</i></small></h6>
-                                    <p>Diam amet duo labore stet elitr invidunt ea clita ipsum voluptua, tempor labore
-                                        accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed sed eirmod
-                                        ipsum.</p>
-                                    <button class="btn btn-sm btn-outline-secondary">Reply</button>
-                                    <div class="media mt-4">
-                                        <img src="img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1"
-                                            style="width: 45px;">
+                                @foreach ($posts->comments as $comment)
+                                    <div class="media">
+                                        <img src="{{asset('img/user.jpg')}}" alt="Image" class="img-fluid mr-3 mt-1"
+                                            style="width: 45px; border-radius:50%;">
                                         <div class="media-body">
-                                            <h6><a class="text-secondary font-weight-bold" href="">John Doe</a>
-                                                <small><i>01 Jan 2045</i></small></h6>
-                                            <p>Diam amet duo labore stet elitr invidunt ea clita ipsum voluptua, tempor
-                                                labore accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed
-                                                sed
-                                                eirmod ipsum.</p>
+                                            <h6><a class="text-secondary font-weight-bold" href="">{{$comment->user->name}}</a>
+                                                <small><i>{{Carbon::parse($comment->created_at)->format('d M, Y') }}</i></small>
+                                            </h6>
+                                            <p>{{$comment->body}}</p>
                                             <button class="btn btn-sm btn-outline-secondary">Reply</button>
+                                            @if ($comment->replies)
+                                                @foreach ($comment->replies as $reply)
+                                                    <div class="media mt-4">
+                                                        <img src="img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1"
+                                                            style="width: 45px;">
+                                                        <div class="media-body">
+                                                            <h6><a class="text-secondary font-weight-bold" href="">{{$reply}}</a>
+                                                                <small><i>{{reply}}</i></small>
+                                                            </h6>
+                                                            <p>{{$reply}}</p>
+                                                            <button class="btn btn-sm btn-outline-secondary">Reply</button>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            @endif
+
+
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                @endforeach
+                            @else
+                                <p>No comments.</p>
+                            @endif
                         </div>
                     </div>
                     <!-- Comment List End -->
@@ -271,7 +274,8 @@
                                 @csrf
                                 <div class="form-group">
                                     <label for="message">Message *</label>
-                                    <textarea id="message" name="body" cols="30" rows="5" class="form-control"></textarea>
+                                    <textarea id="message" name="body" cols="30" rows="5"
+                                        class="form-control"></textarea>
                                 </div>
                                 <div class="form-group mb-0">
                                     <input type="submit" value="Leave a comment"

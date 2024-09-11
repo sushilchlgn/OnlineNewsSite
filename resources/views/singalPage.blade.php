@@ -200,6 +200,26 @@
                     <!-- News Detail End -->
 
                     <!-- Comment List Start -->
+                    @foreach ($posts->comments as $comment)
+                        <div>
+                            <p>{{ $comment->user->name }}: {{ $comment->body }}</p>
+                            @if ($comment->replies)
+                                @foreach ($comment->replies as $reply)
+                                    <div style="margin-left: 20px;">
+                                        <p>{{ $reply->user->name }}: {{ $reply->body }}</p>
+                                    </div>
+                                @endforeach
+                            @endif
+                        </div>
+
+                        <!-- Reply form -->
+                        <form action="{{ route('comments.store', $post->id) }}" method="POST">
+                            @csrf
+                            <textarea name="body"></textarea>
+                            <input type="hidden" name="parent_id" value="{{ $comment->id }}">
+                            <button type="submit">Reply</button>
+                        </form>
+                    @endforeach
                     <!-- <div class="mb-3">
                         <div class="section-title mb-0">
                             <h4 class="m-0 text-uppercase font-weight-bold">3 Comments</h4>
@@ -208,26 +228,32 @@
                             <div class="media mb-4">
                                 <img src="img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
                                 <div class="media-body">
-                                    <h6><a class="text-secondary font-weight-bold" href="">John Doe</a> <small><i>01 Jan 2045</i></small></h6>
+                                    <h6><a class="text-secondary font-weight-bold" href="">John Doe</a> <small><i>01 Jan
+                                                2045</i></small></h6>
                                     <p>Diam amet duo labore stet elitr invidunt ea clita ipsum voluptua, tempor labore
-                                        accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed sed eirmod ipsum.</p>
+                                        accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed sed eirmod
+                                        ipsum.</p>
                                     <button class="btn btn-sm btn-outline-secondary">Reply</button>
                                 </div>
                             </div>
                             <div class="media">
                                 <img src="img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
                                 <div class="media-body">
-                                    <h6><a class="text-secondary font-weight-bold" href="">John Doe</a> <small><i>01 Jan 2045</i></small></h6>
+                                    <h6><a class="text-secondary font-weight-bold" href="">John Doe</a> <small><i>01 Jan
+                                                2045</i></small></h6>
                                     <p>Diam amet duo labore stet elitr invidunt ea clita ipsum voluptua, tempor labore
-                                        accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed sed eirmod ipsum.</p>
+                                        accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed sed eirmod
+                                        ipsum.</p>
                                     <button class="btn btn-sm btn-outline-secondary">Reply</button>
                                     <div class="media mt-4">
                                         <img src="img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1"
                                             style="width: 45px;">
                                         <div class="media-body">
-                                            <h6><a class="text-secondary font-weight-bold" href="">John Doe</a> <small><i>01 Jan 2045</i></small></h6>
+                                            <h6><a class="text-secondary font-weight-bold" href="">John Doe</a>
+                                                <small><i>01 Jan 2045</i></small></h6>
                                             <p>Diam amet duo labore stet elitr invidunt ea clita ipsum voluptua, tempor
-                                                labore accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed sed
+                                                labore accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed
+                                                sed
                                                 eirmod ipsum.</p>
                                             <button class="btn btn-sm btn-outline-secondary">Reply</button>
                                         </div>

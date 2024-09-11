@@ -1,12 +1,12 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SingalPageController;
 use App\Models\Post;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -20,6 +20,7 @@ Route::get('/', [HomePageController::class, 'index']);
 
 Route::resource('categories', CategoryController::class);
 
+Route::post('posts/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
 
 
 

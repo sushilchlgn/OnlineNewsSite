@@ -204,69 +204,75 @@
                         <div class="section-title mb-0">
                             <h4 class="m-0 text-uppercase font-weight-bold">3 Comments</h4>
                         </div>
-                        @if ($posts->comments && $posts->comments->count() > 0)
+                        @if (auth()->check())
                             <div class="bg-white border border-top-0 p-4">
-                                @foreach ($posts->comments as $comment)
-                                    <div class="media mb-4">
-                                        <img src="img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
-                                        <div class="media-body">
-                                            <h6><a class="text-secondary font-weight-bold" href="">{{$comment->user->name}}</a>
-                                                <small><i>{{Carbon::parse($comment->created_at)->format('d M, Y') }}</i></small>
-                                            </h6>
-                                            <p>{{$comment->body}}</p>
+                                @if ($posts->comments && $posts->comments->count() > 0)
+                                    @foreach ($posts->comments as $comment)
+                                        <div class="media mb-4">
+                                            <img src="img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
+                                            <div class="media-body">
+                                                <h6><a class="text-secondary font-weight-bold" href="">{{$comment->user->name}}</a>
+                                                    <small><i>{{Carbon::parse($comment->created_at)->format('d M, Y') }}</i></small>
+                                                </h6>
+                                                <p>{{$comment->body}}</p>
 
-                                            <button class="btn btn-sm btn-outline-secondary"
-                                                onclick="toggleReplyForm({{ $comment->id }})">Reply</button>
+                                                <button class="btn btn-sm btn-outline-secondary"
+                                                    onclick="toggleReplyForm({{ $comment->id }})">Reply</button>
 
-                                            <!-- Reply Form (Initially Hidden) -->
-                                            <form id="replyForm-{{ $comment->id }}" class="mt-3" style="display: none;"
-                                                action="{{ route('comments.store', $posts->id) }}" method="POST">
-                                                @csrf
-                                                <div class="form-group">
-                                                    <textarea class="form-control" name="body" rows="3"
-                                                        placeholder="Your Reply"></textarea>
-                                                    <input type="hidden" name="parent_id" value="{{ $comment->id }}">
-                                                </div>
-                                                <button type="submit" class="btn btn-primary btn-sm">Submit Reply</button>
-                                            </form>
-
-                                            @if ($comment->replies)
-                                                @foreach ($comment->replies as $reply)
-                                                    <div class="media mt-4">
-                                                        <img src="img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1"
-                                                            style="width: 45px;">
-                                                        <div class="media-body">
-                                                            <h6><a class="text-secondary font-weight-bold"
-                                                                    href="">{{ $reply->user->name }}</a>
-                                                                <small><i>{{Carbon::parse($reply->created_at)->format('d M, Y') }}</i></small>
-                                                            </h6>
-                                                            <p>{{ $reply->body }}</p>
-                                                            <button class="btn btn-sm btn-outline-secondary"
-                                                                onclick="toggleReplyForm({{ $reply->id }})">Reply</button>
-
-                                                            <!-- Nested Reply Form (Initially Hidden) -->
-                                                            <form id="replyForm-{{ $reply->id }}" class="mt-3" style="display: none;"
-                                                                action="{{ route('comments.store', $posts->id) }}" method="POST">
-                                                                @csrf
-                                                                <div class="form-group">
-                                                                    <textarea class="form-control" name="body" rows="3"
-                                                                        placeholder="Your Reply"></textarea>
-                                                                    <input type="hidden" name="parent_id" value="{{ $reply->id }}">
-                                                                </div>
-                                                                <button type="submit" class="btn btn-primary btn-sm">Submit
-                                                                    Reply</button>
-                                                            </form>
-                                                        </div>
+                                                <!-- Reply Form (Initially Hidden) -->
+                                                <form id="replyForm-{{ $comment->id }}" class="mt-3" style="display: none;"
+                                                    action="{{ route('comments.store', $posts->id) }}" method="POST">
+                                                    @csrf
+                                                    <div class="form-group">
+                                                        <textarea class="form-control" name="body" rows="3"
+                                                            placeholder="Your Reply"></textarea>
+                                                        <input type="hidden" name="parent_id" value="{{ $comment->id }}">
                                                     </div>
-                                                @endforeach
-                                            @endif
+                                                    <button type="submit" class="btn btn-primary btn-sm">Submit Reply</button>
+                                                </form>
+
+                                                @if ($comment->replies)
+                                                    @foreach ($comment->replies as $reply)
+                                                        <div class="media mt-4">
+                                                            <img src="img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1"
+                                                                style="width: 45px;">
+                                                            <div class="media-body">
+                                                                <h6><a class="text-secondary font-weight-bold"
+                                                                        href="">{{ $reply->user->name }}</a>
+                                                                    <small><i>{{Carbon::parse($reply->created_at)->format('d M, Y') }}</i></small>
+                                                                </h6>
+                                                                <p>{{ $reply->body }}</p>
+                                                                <button class="btn btn-sm btn-outline-secondary"
+                                                                    onclick="toggleReplyForm({{ $reply->id }})">Reply</button>
+
+                                                                <!-- Nested Reply Form (Initially Hidden) -->
+                                                                <form id="replyForm-{{ $reply->id }}" class="mt-3" style="display: none;"
+                                                                    action="{{ route('comments.store', $posts->id) }}" method="POST">
+                                                                    @csrf
+                                                                    <div class="form-group">
+                                                                        <textarea class="form-control" name="body" rows="3"
+                                                                            placeholder="Your Reply"></textarea>
+                                                                        <input type="hidden" name="parent_id" value="{{ $reply->id }}">
+                                                                    </div>
+                                                                    <button type="submit" class="btn btn-primary btn-sm">Submit
+                                                                        Reply</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                @endif
+                                            </div>
                                         </div>
-                                    </div>
-                                @endforeach
+                                    @endforeach
+                                @else
+                                    <p>No Comments</p>
+                                @endif
                             </div>
+
                         @else
-                            <p>No Comments</p>
+                            <p>You need to <a href="{{ route('login') }}">log in</a> to comment.</p>
                         @endif
+
                     </div>
                     <!-- Comment List End -->
 

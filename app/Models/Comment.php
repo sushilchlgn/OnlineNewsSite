@@ -19,7 +19,6 @@ class Comment extends Model
     {
         return $this->belongsTo(Post::class);
     }
-
     function user()
     {
         return $this->belongsTo(User::class);
@@ -29,8 +28,7 @@ class Comment extends Model
     {
         return $this->hasMany(Comment::class, 'parent_id');
     }
-
-    function comments()
+     function comments()
     {
         return $this->belongsTo(Comment::class, 'parent_id');
     }

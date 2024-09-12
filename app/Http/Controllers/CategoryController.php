@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\category;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -41,19 +42,14 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(category $category)
-    {
-        $categories = Category::all();
-        return view('category.show', compact('categories'));
-    }
+    // public function show(category $category)
+    // {
+    //     // $category = Category::find( $category->id);
+    //     // return view("category", compact("category"));
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(category $category)
-    {
-        //
-    }
+    //     // $categories = Category::all();
+    //     // return view('admin.category', compact('categories'));
+    // }
 
     /**
      * Update the specified resource in storage.

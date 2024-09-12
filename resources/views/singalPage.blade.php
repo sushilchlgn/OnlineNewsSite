@@ -271,6 +271,7 @@
                             @if (auth()->check())
                                 <form id="comment-form" action="{{ route('comments.store', $posts->id) }}" method="POST">
                                     @csrf
+                                    <input type="hidden" name="post_id" value="{{$posts->id}}">
                                     <div class="form-group">
                                         <label for="message">Message *</label>
                                         <textarea id="message" name="body" cols="30" rows="5"

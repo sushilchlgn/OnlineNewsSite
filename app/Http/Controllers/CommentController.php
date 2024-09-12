@@ -29,13 +29,22 @@ class CommentController extends Controller
             'body' => 'required',
         ]);
 
-        Comment::create([
-            'post_id' => $post->id,
+        $data = Comment::create([
+            'post_id' => $request->post_id,
             'user_id' => auth()->id(),
             'body' => $request->body,
             'parent_id' => $request->parent_id ?? null,
         ]);
+        // dd($data);
+
         return back();
+    }
+
+    public function destroy($id)
+    {
+        $comment = Comment::findOrFail($id);
+        $comment->destroy(auth()->id());
+        return redirect()->route('comments.index')->with('success', 'Comment deleted successfully ');
     }
     public function reply(Request $request, Comment $comment)
     {

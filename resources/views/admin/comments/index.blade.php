@@ -65,8 +65,8 @@
                                 <thead>
                                     <tr>
                                         <th>NAME</th>
-                                        <th>USER ID</th>
-                                        <th>POST ID</th>
+                                        <th>USER NAME</th>
+                                        <th>POST TITLE</th>
                                         <th>ACTIONS</th>
                                     </tr>
                                 </thead>
@@ -79,7 +79,7 @@
                                     $i++;
                                     @endphp
                                     <tr>
-                                        <td> {{$item->body}} </td>
+                                        <td>{{$item->body}}</td>
                                         <td>{{$item->user->name}}</td>
                                         <td>{{$item->post->title}}</td>
 
@@ -119,10 +119,7 @@
                                                 </div>
                                             </div>
 
-
-
-
-                                            <form action="{{route('category.delete')}}"
+                                            <form action="{{route('comments.destroy',$item->id)}}"
                                                 method="POST" style="display:inline-block;">
                                                 @csrf
                                                 @method('DELETE')

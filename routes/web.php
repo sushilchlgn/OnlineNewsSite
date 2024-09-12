@@ -5,7 +5,6 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\SingalPageController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
@@ -14,20 +13,12 @@ Route::get('/', function () {
 });
 Route::get('/', [HomePageController::class, 'index']);
 
-// Route::get('/page', function () {
-//     return view('singalPage');
-// });
-
 Route::resource('categories', CategoryController::class);
 
-
-
-// Route::get('/post/{id}',[SingalPageController::class,'show'])->name('posts.page');
 Route::get('/post/{id}', function ($id) {
     $posts = Post::find($id);
     return view('singalPage', compact('posts'));
 })->name('posts.page');
-
 
 Route::get('/dashboard', function () {
     return view('admin/dashboard');
@@ -41,9 +32,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/category/create', [CategoryController::class, 'index'])->name('category.show');
     Route::post('/category/create', [CategoryController::class, 'store'])->name('category.store');
     Route::delete('/category', [CategoryController::class, 'destroy'])->name('category.delete');
-    Route::post('posts/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
+    Route::resource('comments', CommentController::class);
+    // Route::get('/posts/comments', [CommentController::class, 'index'])->name('comments.show');
+    // Route::post('posts/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
     // route::post('/posts/{post}/comments', [CommentController::class, 'store'])->name('comments.store')->middleware('auth');
-    Route::get('/posts/comments', [CommentController::class, 'index'])->name('comments.show');
     Route::post('/comments/{comment}/reply', [CommentController::class, 'reply'])->name('comments.reply')->middleware('auth');
 });
 

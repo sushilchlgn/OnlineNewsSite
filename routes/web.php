@@ -31,11 +31,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    // Route::get('/category/create', [CategoryController::class, 'index'])->name('category.show');
-    // Route::post('/category/create', [CategoryController::class, 'store'])->name('category.store');
-    // Route::delete('/category', [CategoryController::class, 'destroy'])->name('category.delete');
+    Route::get('/category/create', [CategoryController::class, 'index'])->name('category.index');
+    Route::post('/category/create', [CategoryController::class, 'store'])->name('category.store');
+    Route::delete('/category', [CategoryController::class, 'destroy'])->name('category.delete');
     Route::get('/category', [CategoryController::class, 'show'])->name('category.show');
-    // Route::post('/category/{id}', [CategoryController::class,'show'])->name('category.show');
 
     Route::resource('comments', CommentController::class);
     // Route::get('/posts/comments', [CommentController::class, 'index'])->name('comments.show');

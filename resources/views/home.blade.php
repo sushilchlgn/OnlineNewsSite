@@ -376,7 +376,7 @@
                                     <div class="bg-white border border-top-0 p-4">
                                         <div class="mb-2">
                                             <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                                href="#">{{$item->category->name}}</a>
+                                                href="{{route('category.show',$item->category->id)}}">{{$item->category->name}}</a>
                                             <a class="text-body"
                                                 href=""><small>{{Carbon::parse($item->created_at)->format('M d, Y') }}</small></a>
                                         </div>

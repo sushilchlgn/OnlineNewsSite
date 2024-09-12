@@ -5,6 +5,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Models\category;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,7 @@ Route::get('/post/{id}', function ($id) {
     return view('singalPage', compact('posts'));
 })->name('posts.page');
 
+
 Route::get('/dashboard', function () {
     return view('admin/dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -29,15 +31,24 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/category/create', [CategoryController::class, 'index'])->name('category.show');
-    Route::post('/category/create', [CategoryController::class, 'store'])->name('category.store');
-    Route::delete('/category', [CategoryController::class, 'destroy'])->name('category.delete');
+    // Route::get('/category/create', [CategoryController::class, 'index'])->name('category.show');
+    // Route::post('/category/create', [CategoryController::class, 'store'])->name('category.store');
+    // Route::delete('/category', [CategoryController::class, 'destroy'])->name('category.delete');
+    Route::get('/category', [CategoryController::class, 'show'])->name('category.show');
+    // Route::post('/category/{id}', [CategoryController::class,'show'])->name('category.show');
+
     Route::resource('comments', CommentController::class);
     // Route::get('/posts/comments', [CommentController::class, 'index'])->name('comments.show');
     // Route::post('posts/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
     // route::post('/posts/{post}/comments', [CommentController::class, 'store'])->name('comments.store')->middleware('auth');
     Route::post('/comments/{comment}/reply', [CommentController::class, 'reply'])->name('comments.reply')->middleware('auth');
 });
+
+Route::get('/category{id}', function ($id) {
+    $category = category::find($id);
+    $posts = Post::where('category_id', $id)->get();
+    return view('category', compact('category', 'posts'));
+})->name('category.show');
 
 
 

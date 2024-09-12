@@ -37,14 +37,14 @@
                                 <div class="modal-content">
 
                                     {{-- Modal Header --}}
-                                    <div class="modal-header">
+                                    {{--<div class="modal-header">
                                         <h4 class="modal-title">Add New Product Category</h4>
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    </div>
+                                    </div>--}}
 
                                     {{-- Modal body --}}
-                                    <div class="modal-body">
-                                        <form action="{{route('category.store')}}" method="POST"
+                                    {{--<div class="modal-body">
+                                        <form action="{{route('comments.store')}}" method="POST"
                                             enctype="multipart/form-data">
                                             @csrf
                                             @method('POST')
@@ -55,7 +55,7 @@
                                             <input type="submit" name="save" class="btn btn-success"
                                                 value="Save Now" />
                                         </form>
-                                    </div>
+                                    </div>--}}
                                 </div>
                             </div>
                         </div>
@@ -74,7 +74,7 @@
                                     @php
                                     $i = 0;
                                     @endphp
-                                    @foreach ($comments as $item)
+                                    @foreach ($comment as $item)
                                     @php
                                     $i++;
                                     @endphp

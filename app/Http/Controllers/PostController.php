@@ -65,7 +65,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('posts.edit', compact('post'));
+        $categories = category::all();
+        return view('admin.posts.create', compact('post','categories'));
     }
 
     /**
@@ -80,11 +81,6 @@ class PostController extends Controller
         ]);
 
         $post = Post::findOrFail($post->id);
-        // $post->title = $request->input('title');
-        // $post->description = $request->input('description');
-        // $post->category_id = $request->input('category_id');
-        // $post->save();
-        // dd($post);
         $post->update($data);
 
         return redirect()->route('posts.index')->with('success', 'Post updated successfully');

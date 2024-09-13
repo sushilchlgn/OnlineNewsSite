@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::get('/', [HomePageController::class, 'index']);
 
-Route::resource('categories', CategoryController::class);
+// Route::resource('categories', CategoryController::class);
 
 Route::get('/post/{id}', function ($id) {
     $posts = Post::find($id);
@@ -32,12 +32,15 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
-    Route::get('/category/create',function () {
+    Route::get('/category/create', function () {
         return view('admin.posts_category.add-category');
     })->name('category.add');
     Route::post('/category/create', [CategoryController::class, 'store'])->name('category.store');
     Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('category.delete');
-    // Route::get('/category', [CategoryController::class, 'show'])->name('category.show');
+    Route::get('/category/add', [CategoryController::class, 'create'])->name('category.add');
+    Route::get('/category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
+    Route::put('/category/update/{id}', [CategoryController::class, 'update'])->name('category.update');
+    
 
     Route::resource('comments', CommentController::class);
     // Route::get('/posts/comments', [CommentController::class, 'index'])->name('comments.show');

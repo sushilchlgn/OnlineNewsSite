@@ -148,7 +148,8 @@
     $(function () {
         bsCustomFileInput.init();
     });
-    @endsection--}}
+    @endsection
+    --}}
 
 
     <x-app-layout>
@@ -162,60 +163,41 @@
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-                <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                    <div class="max-w-xl">
-                        <table class="text-left m-4" style="border-collapse:collapse">
-                            <thead>
-                                <tr>
-                                    <th class="py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">Feature</th>
-                                    <th class="py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">Supported?</th>
-                                    <th class="py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">Feature</th>
-                                    <th class="py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">Supported?</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- <tr class="hover:bg-blue-lightest">
-                                    <td class="py-4 px-6 border-b border-grey-light">Conversations</td>
-                                    <td class="py-4 px-6 border-b border-grey-light text-center">❌</td>
-                                </tr>
-                                <tr class="hover:bg-blue-lightest">
-                                    <td class="py-4 px-6 border-b border-grey-light">Question-Buttons</td>
-                                    <td class="py-4 px-6 border-b border-grey-light text-center">❌</td>
-                                </tr>
-                                <tr class="hover:bg-blue-lightest">
-                                    <td class="py-4 px-6 border-b border-grey-light">Image Attachment</td>
-                                    <td class="py-4 px-6 border-b border-grey-light text-center">✅ </td>
-                                </tr>
-                                <tr class="hover:bg-blue-lightest">
-                                    <td class="py-4 px-6 border-b border-grey-light">Video Attachment</td>
-                                    <td class="py-4 px-6 border-b border-grey-light text-center">❌</td>
-                                </tr>
-                                <tr class="hover:bg-blue-lightest">
-                                    <td class="py-4 px-6 border-b border-grey-light">Audio Attachment</td>
-                                    <td class="py-4 px-6 border-b border-grey-light text-center">❌</td>
-                                </tr>
-                                <tr class="hover:bg-blue-lightest">
-                                    <td class="py-4 px-6 border-b border-grey-light">Location Attachment</td>
-                                    <td class="py-4 px-6 border-b border-grey-light text-center">❌</td>
-                                </tr> -->
-                            </tbody>
-                        </table>
-                        {{-- @include('admin.profile.partials.update-profile-information-form') --}}
-                    </div>
-                </div>
+                <div class="p-4 sm:p-8 bg-white relative overflow-x-auto shadow sm:rounded-lg">
+                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        <thead class="text-xs text-gray-900 uppercase ">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">
+                                    Category
+                                </th>
 
-            <!-- <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                    <div class="max-w-xl">
-                        {{-- @include('admin.profile.partials.update-password-form') --}}
-                    </div>
-                </div> -->
+                                <th scope="col" class="px-6 py-3">
+                                    Action
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($categories as $item)
+                                <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            {{$item->name}}
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        <a href="#" class=" font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                        <form action="{{route('category.delete',$item->id)}}" method="POST"
+                                            style="display:inline-block;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class=" px-6 font-medium text-red-600 dark:text-red-500 hover:underline" onclick="return confirm('Are you sure you want to delete this item?')">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
 
-                <!-- <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                    <div class="max-w-xl">
-                        {{-- @include('admin.profile.partials.delete-user-form') --}}
-                    </div> -->
                 </div>
             </div>
-        </div>
+        </div >
         @endsection
-    </x-app-layout>
+    </x-app-layout >

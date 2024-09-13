@@ -23,7 +23,7 @@ class CategoryController extends Controller
     public function create()
     {
         return view("category.create");
-        
+
     }
 
     /**
@@ -67,9 +67,9 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(category $category)
+    public function destroy(Category $category)
     {
         $category->delete();
-        return redirect()->route('category.show')->with("success","Category deleted successfullly");
+        return redirect()->route("category.index")->with("success", "Category deleted successfully");
     }
 }

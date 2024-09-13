@@ -13,7 +13,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = category::all();
         return view("admin.posts_category.index", compact("categories"));
     }
 
@@ -36,7 +36,7 @@ class CategoryController extends Controller
         $data->save();
 
         // dd($data->toArray());
-        return redirect()->route("category.show");
+        return redirect()->route("category.index")->with("success","Category created successfully!");
     }
 
     /**
@@ -69,6 +69,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        
         $category->delete();
         return redirect()->route("category.index")->with("success", "Category deleted successfully");
     }

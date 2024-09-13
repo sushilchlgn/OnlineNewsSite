@@ -1,7 +1,7 @@
 @php
     use Illuminate\Support\Str;
 @endphp
-@extends('admin.layout')
+@extends('layouts.app')
 
 @section('customCss')
 <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
@@ -99,7 +99,7 @@
                         </div>
 
                         <div class="card-body">
-                            <table id="example1" class="table table-bordered table-striped">
+                            <table id="example1" class="table table-bordered table-striped " >
                                 <thead>
                                     <tr>
                                         <th>TITLE</th>
@@ -121,13 +121,13 @@
                                             --}}
 
 
-                                            <td class="font-weight-medium">
+                                            <td class="font-weight-medium flex gap-2" >
                                                 <button type="button" class="btn" title="Edit" data-toggle="modal"
                                                     data-target="#updateModel{{ $item->id }}">
-                                                    <i class="fas fa-edit fa-lg"></i>
+                                                    <i class="fas fa-edit fa-lg">update</i>
                                                 </button>
 
-                                                <div class="modal" id="updateModel{{ $item->id }}">
+                                                <!-- <div class="modal" id="updateModel{{ $item->id }}">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
@@ -179,18 +179,18 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                                 <a href="#" class="text-danger" onclick="event.preventDefault();  
                                                     document.getElementById('delete-form-{{ $item->id }}').submit();">
-                                                    <i class="fas fa-trash fa-lg"></i>
+                                                    <i class="fas fa-trash fa-lg">delete</i>
                                                 </a>
 
-                                                <form id="delete-form-{{ $item->id }}"
+                                                <!-- <form id="delete-form-{{ $item->id }}"
                                                     action="{{ route('posts.destroy', $item->id) }}" method="POST"
                                                     style="display: none;">
                                                     @csrf
                                                     @method('DELETE')
-                                                </form>
+                                                </form> -->
                                             </td>
                                         </tr>
                                     @endforeach

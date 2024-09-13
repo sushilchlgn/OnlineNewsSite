@@ -13,6 +13,6 @@ class HomePageController extends Controller
         $featurePost = Post::orderBy("created_at","desc")->paginate(4);
         $ViewPost = Post::orderBy("views")->paginate(5);
     
-        return view("home", compact("post","featurePost"));
+        return view("welcome", compact("post","featurePost"));
     }
 }

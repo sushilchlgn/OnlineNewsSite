@@ -14,7 +14,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-        return view("admin.posts_category.index", compact("categories"));
+        return view("posts_category.index", compact("categories"));
     }
 
     /**
@@ -54,15 +54,15 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, category $category)
-    {
-        $request->validate([
-            'name'=> 'required',
-        ]);
+    // public function update(Request $request, category $category)
+    // {
+    //     $request->validate([
+    //         'name'=> 'required',
+    //     ]);
 
-        $category->update($request->all());
-        return redirect()->route('')->with('success','Category updated successfully');
-    }
+    //     $category->update($request->all());
+    //     return redirect()->route('')->with('success','Category updated successfully');
+    // }
 
     /**
      * Remove the specified resource from storage.

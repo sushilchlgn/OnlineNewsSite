@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('layouts.app')
 @section('customCss')
 <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
 
@@ -84,7 +84,7 @@
                                         <td>{{$item->post->title}}</td>
 
                                         {{-- Update Model   --}}
-                                        <td class="font-weight-medium">
+                                        {<td class="font-weight-medium">
                                             <button type="button" class="btn" title="Edit" data-toggle="modal"
                                                 data-target="#updateModel{{ $i }}">
                                                 <i class="fas fa-edit fa-lg"></i>
@@ -128,7 +128,7 @@
                                                     <i class="fas fa-lg fa-trash-alt"></i>
                                                 </button>
                                             </form>
-                                        </td>
+                                        </td>}
 
                                     </tr>
                                     @endforeach

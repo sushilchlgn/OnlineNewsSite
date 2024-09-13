@@ -9,9 +9,9 @@ use App\Models\category;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-});
+// Route::get('/', function () {
+//     return view('home');
+// });
 Route::get('/', [HomePageController::class, 'index']);
 
 Route::resource('categories', CategoryController::class);
@@ -23,7 +23,7 @@ Route::get('/post/{id}', function ($id) {
 
 
 Route::get('/dashboard', function () {
-    return view('admin/dashboard');
+    return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

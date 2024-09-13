@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('layouts.app')
 @section('customCss')
 <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
 
@@ -10,14 +10,18 @@
 @section('content')
 <div class="content-wrapper">
     <!-- Your existing content -->
-
+    <div>
+        <ul>
+            <li>hello</li>
+        </ul>
+    </div>
     <section class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="menu-title navbar">
-                            <h2 class="ml-2 menu-title">Product Category</h2>
+                            <h2 class="ml-2 menu-title">Post Category</h2>
                             <div>
                                 @if (@session('success'))
                                 <div class="alert alert-success bg-success h3 text-white rounded fw-bolder fs-1">
@@ -35,10 +39,9 @@
                         <div class="modal" id="AddNewCategory">
                             <div class="modal-dialog">
                                 <div class="modal-content">
-
                                     {{-- Modal Header --}}
                                     <div class="modal-header">
-                                        <h4 class="modal-title">Add New Product Category</h4>
+                                        <h4 class="modal-title">Add New Post Category</h4>
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                                     </div>
 
@@ -49,11 +52,10 @@
                                             @csrf
                                             @method('POST')
                                             <label for="name">Name:</label>
-                                            <input type="name" id="name" name="name"
-                                                placeholder="Enter Name:" class="form-control mb-2">
+                                            <input type="name" id="name" name="name" placeholder="Enter Name:"
+                                                class="form-control mb-2">
 
-                                            <input type="submit" name="save" class="btn btn-success"
-                                                value="Save Now" />
+                                            <input type="submit" name="save" class="btn btn-success" value="Save Now" />
                                         </form>
                                     </div>
                                 </div>
@@ -94,21 +96,18 @@
                                                                 data-dismiss="modal">&times;</button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form action=""
-                                                                method="POST" enctype="multipart/form-data">
+                                                            <form action="" method="POST" enctype="multipart/form-data">
                                                                 @csrf
                                                                 @method('PUT')
 
                                                                 <label for="name">Name:</label>
                                                                 <input type="name" id="name" name="name"
-                                                                    value="{{$item->name}}"
-                                                                    placeholder="Enter Name:"
+                                                                    value="{{$item->name}}" placeholder="Enter Name:"
                                                                     class="form-control mb-2">
 
-                                                                <input type="hidden" name="id"
-                                                                    value="$item->id">
-                                                                <input type="submit" name="save"
-                                                                    class="btn btn-success" value="Save Changes" />
+                                                                <input type="hidden" name="id" value="$item->id">
+                                                                <input type="submit" name="save" class="btn btn-success"
+                                                                    value="Save Changes" />
                                                             </form>
                                                         </div>
                                                     </div>
@@ -118,8 +117,8 @@
 
 
 
-                                            <form action="{{route('category.delete')}}"
-                                                method="POST" style="display:inline-block;">
+                                            <form action="{{route('category.delete')}}" method="POST"
+                                                style="display:inline-block;">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-sm w-10" title="Delete"
@@ -140,13 +139,14 @@
         </div>
     </section>
 </div>
-@endsection
+@endsection 
+
 @section(' customJs')
 <script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 
 
 <script>
-    $(function() {
+    $(function () {
         bsCustomFileInput.init();
     });
     @endsection

@@ -3,7 +3,7 @@
 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Categorys') }}
+            {{ __('Categories') }}
         </h2>
     </x-slot>
 
@@ -24,7 +24,7 @@
             @endif
 
             <div class="p-4 sm:p-8 bg-white relative overflow-x-auto shadow sm:rounded-lg">
-                <a href="{{route('category.add')}}">
+                <a href="{{ route('category.add') }}">
                     <button
                         class="bg-transparent float-end hover:bg-green-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
                         Add Category
@@ -36,7 +36,6 @@
                             <th scope="col" class="px-6 py-3">
                                 Category
                             </th>
-
                             <th scope="col" class="px-6 py-3">
                                 Action
                             </th>
@@ -51,14 +50,14 @@
                                     {{$item->name}}
                                 </th>
                                 <td class="px-6 py-4">
-                                    <a href="#"
-                                        class=" font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                                    <form action="{{route('category.delete', $item->id)}}" method="POST"
+                                    <a href="{{ route('category.edit', $item->id) }}"
+                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                    <form action="{{ route('category.delete', $item->id) }}" method="POST"
                                         style="display:inline-block;">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"
-                                            class=" px-6 font-medium text-red-600 dark:text-red-500 hover:underline"
+                                            class="px-6 font-medium text-red-600 dark:text-red-500 hover:underline"
                                             onclick="return confirm('Are you sure you want to delete this item?')">Delete</button>
                                     </form>
                                 </td>
@@ -66,7 +65,6 @@
                         @endforeach
                     </tbody>
                 </table>
-
             </div>
         </div>
     </div>

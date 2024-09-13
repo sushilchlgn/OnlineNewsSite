@@ -35,6 +35,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/category/create', [CategoryController::class, 'store'])->name('category.store');
     Route::delete('/category', [CategoryController::class, 'destroy'])->name('category.delete');
     Route::get('/category', [CategoryController::class, 'show'])->name('category.show');
+    Route::get('dashboard/category/create',function () {
+        return view('admin.posts_category.add-category');
+    })->name('category.add');
 
     Route::resource('comments', CommentController::class);
     // Route::get('/posts/comments', [CommentController::class, 'index'])->name('comments.show');

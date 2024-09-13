@@ -56,7 +56,7 @@ class PostController extends Controller
             session()->put($postId, true);
         }
 
-        return view('admin.posts.posts', compact('post'));
+        return view('admin.posts.show', compact('post'));
     }
 
 

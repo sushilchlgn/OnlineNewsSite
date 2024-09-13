@@ -1,272 +1,92 @@
-@php
-    use Illuminate\Support\Str;
-@endphp
-@extends('layouts.app')
+<x-app-layout>
+    @section("content")
 
-@section('customCss')
-<link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-<link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-<link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-@endsection
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Posts') }}
+        </h2>
+    </x-slot>
 
-@section('content')
-<div class="content-wrapper">
-    <!-- Your existing content -->
-
-    <section class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="menu-title navbar">
-                            <h2 class="ml-2 menu-title">Posts</h2>
-                            <div>
-                                @if (session('success'))
-                                    <div class="alert alert-success bg-success h3 text-white rounded fw-bolder fs-1">
-                                        {{ session('success') }}
-                                    </div>
-                                @endif
-                                @if (session('error'))
-                                    <div class="alert alert-danger bg-danger h3 text-white rounded fw-bolder fs-1">
-                                        {{ session('error') }}
-                                    </div>
-                                @endif
-                            </div>
-                            <div class="navbar d-flex justify-content-end">
-                            <button type="button" data-toggle="modal" data-target="#addNewProduct" class="btn btn-success">
-                                Add New
-                            </button>
-                            </div>
-                        </div>
-
-                        <div class="modal" id="addNewProduct">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-
-                                    <!-- Modal Header -->
-                                    <div class="modal-header">
-                                        <h4 class="modal-title">Add New Posts</h4>
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    </div>
-
-                                    <!-- Modal body -->
-                                    <div class="modal-body">
-                                        <form action="{{ route('posts.store')}}" method="POST"
-                                            enctype="multipart/form-data">
-                                            @csrf
-                                            @method("POST")
-
-                                            <label for="title">Title</label>
-                                            <input type="text" id="title" name="title" placeholder="Enter Your title"
-                                                class="form-control mb-2">
-
-                                            <label for="description">Description</label>
-                                            <textarea class="form-control" id="description" style="height:150px"
-                                                name="description"
-                                                placeholder="Enter your description about news"></textarea>
-
-
-
-                                            <div class="mb-3">
-                                                <label for="category" class="form-label">Category</label>
-                                                {{--
-                                                <input type="text" id="category" name="category"
-                                                    placeholder="Enter category" class="form-control mb-2">
-                                                --}}
-                                                <div class="input-group">
-                                                    <select class="form-select form-control selectpicker" id="category"
-                                                        name="category_id">
-                                                        <option value="">Select Categories: </option>
-                                                        @foreach ($categories as $category)
-                                                            <option value="{{ $category->id }}">
-                                                                {{ $category->name }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                    {{-- <button type="button" class="btn btn-primary ml-2"
-                                                        data-toggle="modal" data-target="#addCategoryModal">
-                                                        Add toe
-                                                    </button> --}}
-                                                </div>
-                                            </div>
-
-                                            <input type="submit" name="save" class="btn btn-success" value="Save Now" />
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-body">
-                            <table id="example1" class="table table-bordered table-striped " >
-                                <thead>
-                                    <tr>
-                                        <th>TITLE</th>
-                                        <th>DESCRIPTION</th>
-                                        <th>CATEGORY</th>
-                                        <th>Views</th>
-                                        <th>ACTIONS</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($posts as $item)
-                                        <tr>
-                                            <td>{{ $item->title }}</td>
-                                            <td>{{ Str::limit($item->description, 120)}}</td>
-                                            <td>{{ $item->category->name }}</td>
-                                            <td>{{$item->views }} views</td>
-                                            {{--
-                                            <td>{{$item->category}}</td>
-                                            --}}
-
-
-                                            <td class="font-weight-medium flex gap-2" >
-                                                <button type="button" class="btn" title="Edit" data-toggle="modal"
-                                                    data-target="#updateModel{{ $item->id }}">
-                                                    <i class="fas fa-edit fa-lg">update</i>
-                                                </button>
-
-                                                <!-- <div class="modal" id="updateModel{{ $item->id }}">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h4 class="modal-title">Update Posts</h4>
-                                                                <button type="button" class="close"
-                                                                    data-dismiss="modal">&times;</button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <form action="{{ route('posts.update', $item->id) }}"
-                                                                    method="POST" enctype="multipart/form-data">
-                                                                    @csrf
-                                                                    @method('PUT')
-
-                                                                    <input type="hidden" name="id" value="{{ $item->id }}">
-
-                                                                    <label for="title">Title</label>
-                                                                    <input type="text" id="title" name="title"
-                                                                        value="{{ $item->title }}" placeholder="Enter title"
-                                                                        class="form-control mb-2">
-                                                                    <div class="mb-3">
-                                                                        <label for="description">Description</label>
-                                                                        <textarea class="form-control" id="description"
-                                                                            style="height:150px" name="description"
-                                                                            placeholder="Enter your description"
-                                                                            value="{{$item->description}}">
-                                                                    {{$item->description}}</textarea>
-                                                                    </div>
-
-
-
-                                                                    <label for="category">Category:</label>
-
-                                                                    <select id="category" name="category_id"
-                                                                        class="form-control mb-2">
-                                                                        @foreach ($categories as $category)
-                                                                            <option value="{{ $category->id }}" {{ $category->id == $item->category_id ? 'selected' : '' }}>
-                                                                                {{ $category->name }}
-                                                                            </option>
-                                                                        @endforeach
-                                                                    </select>
-
-
-                                                                    <input type="submit" name="save" class="btn btn-success"
-                                                                        value="Save Now" />
-                                                                </form>
-
-
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div> -->
-                                                <a href="#" class="text-danger" onclick="event.preventDefault();  
-                                                    document.getElementById('delete-form-{{ $item->id }}').submit();">
-                                                    <i class="fas fa-trash fa-lg">delete</i>
-                                                </a>
-
-                                                <!-- <form id="delete-form-{{ $item->id }}"
-                                                    action="{{ route('posts.destroy', $item->id) }}" method="POST"
-                                                    style="display: none;">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                </form> -->
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+            @if (session('success'))
+                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative">
+                    <strong class="font-bold">Success!</strong>
+                    <span class="block sm:inline">{{ session('success') }}</span>
                 </div>
+            @endif
+
+            @if (session('error'))
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
+                    <strong class="font-bold">Error!</strong>
+                    <span class="block sm:inline">{{ session('error') }}</span>
+                </div>
+            @endif
+
+            <div class="p-4 sm:p-8 bg-white relative overflow-x-auto shadow sm:rounded-lg">
+                <a href="{{route('posts.create')}}">
+                    <button
+                        class="bg-transparent float-end hover:bg-green-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                        Add Posts
+                    </button>
+                </a>
+                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-900 uppercase ">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">
+                                Title
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Description
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Category
+                            </th>
+                            <th scope="col" class="px-6 py-3">Views</th>
+                            <th scope="col" class="px-6 py-3">
+                                Action
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($posts as $item)
+                            <tr
+                                class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                                <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{$item->title}}
+                                </th>
+                                <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{ Str::limit($item->description, 12)}}
+                                </th>
+                                <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{$item->category->name}}
+                                </th>
+                                <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{$item->views}}
+                                </th>
+                                <td class="px-6 py-4">
+                                    <a href="#"
+                                        class=" font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                    <form action="{{ route('posts.destroy', $item->id) }}" method="POST"
+                                        style="display:inline-block;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            class=" px-6 font-medium text-red-600 dark:text-red-500 hover:underline"
+                                            onclick="return confirm('Are you sure you want to delete this item?')">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+
             </div>
         </div>
-    </section>
-</div>
-
-<!-- Add Category Modal -->
-<div class="modal" id="addCategoryModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-
-            <!-- Modal Header -->
-            <!-- <div class="modal-header">
-                <h4 class="modal-title">Add New Category</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div> -->
-
-            <!-- Modal Body -->
-            <!-- <div class="modal-body">
-                <form action="{{ route('category.store') }}" method="POST">
-                    @csrf
-                    @method('POST')
-                    <div class="mb-3">
-                        <label for="category" class="form-label">Category Name</label>
-                        <input type="text" class="form-control" id="category" name="name"
-                            placeholder="Enter Category Name">
-                    </div>
-                    <input type="submit" name="save" class="btn btn-success" value="Add Category" />
-                </form>
-            </div> -->
-        </div>
     </div>
-</div>
-@endsection
-
-
-@section('customJs')
-<script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-
-<script>
-    let variantCount = 1;
-
-    function addVariant() {
-        variantCount++;
-        const container = document.createElement('div');
-        container.className = 'mb-3';
-        container.innerHTML = `
-<div class="mb-3">
-<label for="attributes-${variantCount}" class="form-label">Attribute ${variantCount}</label>
-<input type="text" class="form-control" id="attributes-${variantCount}" name="attributes[]" placeholder="Enter attribute name">
-</div>
-<div class="mb-3">
-<label for="options-${variantCount}" class="form-label">Options for Attribute ${variantCount}</label>
-<select class="form-select" id="options-${variantCount}" name="options[]">
-<option value="">Select an option</option>
-<option value="option1">Option 1</option>
-<option value="option2">Option 2</option>
-<option value="option3">Option 3</option>
-</select>
-</div>
-`;
-        document.getElementById('dynamic-variants').appendChild(container);
-    }
-
-    $(function () {
-        bsCustomFileInput.init();
-    });
-</script>
-@endsection
+    @endsection
+</x-app-layout>

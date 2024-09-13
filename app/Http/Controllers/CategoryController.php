@@ -22,7 +22,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view("category.create");
+        $categories = category::all();
+        return view("admin.posts_category.add-category");
 
     }
 
@@ -54,15 +55,20 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    // public function update(Request $request, category $category)
-    // {
-    //     $request->validate([
-    //         'name'=> 'required',
-    //     ]);
 
-    //     $category->update($request->all());
-    //     return redirect()->route('')->with('success','Category updated successfully');
-    // }
+     public function edit(){
+        $categories = category::all();
+        return view("admin.posts_category.add-category")->with("categories", $categories);
+     }
+    public function update(Request $request, category $category)
+    {
+        $request->validate([
+            'name'=> 'required',
+        ]);
+
+        $category->update($request->all());
+        return redirect()->route('category.index')->with('success','Category updated successfully');
+    }
 
     /**
      * Remove the specified resource from storage.

@@ -15,7 +15,7 @@ class PostController extends Controller
     {
         $posts = Post::where('user_id', auth()->id())->get();
         $categories = category::all();
-        return view("posts.posts", compact("posts", "categories"));
+        return view("admin.posts.posts", compact("posts", "categories"));
     }
 
     /**

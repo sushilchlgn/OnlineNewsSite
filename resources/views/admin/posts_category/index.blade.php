@@ -1,15 +1,14 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 @section('customCss')
 <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
 
 <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-{{-- problem --}}
 @endsection
 
 @section('content')
 <div class="content-wrapper">
-    <!-- Your existing content -->
+    <!-- Your existing content --> -->
     <div>
         <ul>
             <li>hello</li>
@@ -39,13 +38,13 @@
                         <div class="modal" id="AddNewCategory">
                             <div class="modal-dialog">
                                 <div class="modal-content">
-                                    {{-- Modal Header --}}
+                                    <!-- Modal Header  -->
                                     <div class="modal-header">
                                         <h4 class="modal-title">Add New Post Category</h4>
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                                     </div>
 
-                                    {{-- Modal body --}}
+                                    <!-- Modal body  -->
                                     <div class="modal-body">
                                         <form action="{{route('category.store')}}" method="POST"
                                             enctype="multipart/form-data">
@@ -81,7 +80,7 @@
                                     <tr>
                                         <td> {{$item->name}} </td>
 
-                                        {{-- Update Model   --}}
+                                        <!-- -- Update Model   -- -->
                                         <td class="font-weight-medium">
                                             <button type="button" class="btn" title="Edit" data-toggle="modal"
                                                 data-target="#updateModel{{ $i }}">
@@ -139,7 +138,7 @@
         </div>
     </section>
 </div>
-@endsection 
+@endsection
 
 @section(' customJs')
 <script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
@@ -149,4 +148,74 @@
     $(function () {
         bsCustomFileInput.init();
     });
-    @endsection
+    @endsection--}}
+
+
+    <x-app-layout>
+        @section("content")
+
+        <x-slot name="header">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Post Categorys') }}
+            </h2>
+        </x-slot>
+
+        <div class="py-12">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+                <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                    <div class="max-w-xl">
+                        <table class="text-left m-4" style="border-collapse:collapse">
+                            <thead>
+                                <tr>
+                                    <th class="py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">Feature</th>
+                                    <th class="py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">Supported?</th>
+                                    <th class="py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">Feature</th>
+                                    <th class="py-4 px-6 bg-grey-lighter font-sans font-medium uppercase text-sm text-grey border-b border-grey-light">Supported?</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- <tr class="hover:bg-blue-lightest">
+                                    <td class="py-4 px-6 border-b border-grey-light">Conversations</td>
+                                    <td class="py-4 px-6 border-b border-grey-light text-center">❌</td>
+                                </tr>
+                                <tr class="hover:bg-blue-lightest">
+                                    <td class="py-4 px-6 border-b border-grey-light">Question-Buttons</td>
+                                    <td class="py-4 px-6 border-b border-grey-light text-center">❌</td>
+                                </tr>
+                                <tr class="hover:bg-blue-lightest">
+                                    <td class="py-4 px-6 border-b border-grey-light">Image Attachment</td>
+                                    <td class="py-4 px-6 border-b border-grey-light text-center">✅ </td>
+                                </tr>
+                                <tr class="hover:bg-blue-lightest">
+                                    <td class="py-4 px-6 border-b border-grey-light">Video Attachment</td>
+                                    <td class="py-4 px-6 border-b border-grey-light text-center">❌</td>
+                                </tr>
+                                <tr class="hover:bg-blue-lightest">
+                                    <td class="py-4 px-6 border-b border-grey-light">Audio Attachment</td>
+                                    <td class="py-4 px-6 border-b border-grey-light text-center">❌</td>
+                                </tr>
+                                <tr class="hover:bg-blue-lightest">
+                                    <td class="py-4 px-6 border-b border-grey-light">Location Attachment</td>
+                                    <td class="py-4 px-6 border-b border-grey-light text-center">❌</td>
+                                </tr> -->
+                            </tbody>
+                        </table>
+                        {{-- @include('admin.profile.partials.update-profile-information-form') --}}
+                    </div>
+                </div>
+
+            <!-- <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                    <div class="max-w-xl">
+                        {{-- @include('admin.profile.partials.update-password-form') --}}
+                    </div>
+                </div> -->
+
+                <!-- <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                    <div class="max-w-xl">
+                        {{-- @include('admin.profile.partials.delete-user-form') --}}
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        @endsection
+    </x-app-layout>

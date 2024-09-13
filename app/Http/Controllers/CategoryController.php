@@ -67,10 +67,10 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy(Category $category, $id)
     {
-        
-        $category->delete();
+        $data = $category::find($id);
+        $data->delete();
         return redirect()->route("category.index")->with("success", "Category deleted successfully");
     }
 }

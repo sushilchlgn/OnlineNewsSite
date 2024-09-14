@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -12,7 +13,8 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        $comment = Comment::all();
+        return view("admin.comments.index", compact("comment"));
     }
 
     /**
@@ -20,7 +22,8 @@ class CommentController extends Controller
      */
     public function create()
     {
-        //
+        $post = Post::all();
+        return view("admin.comments.create", compact("post"));
     }
 
     /**
@@ -28,7 +31,21 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'body' => 'required',
+        ]);
+
+        $data = Comment::create([
+            'post_id' => $request->post_id,
+            'user_id' => auth()->id(),
+            'body' => $request->body,
+            'parent_id' => $request->parent_id ?? null,
+        ]);
+        $data->save();
+
+        // dd($data->toarray());
+
+        return redirect()->route('comments.index')->with('success', 'Comment created successfully');
     }
 
     /**

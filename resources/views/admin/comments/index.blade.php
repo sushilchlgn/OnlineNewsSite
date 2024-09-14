@@ -50,12 +50,12 @@
                                         <p class="text-gray-600">{{ $item->body }}</p>
 
                                         @if (auth()->check())
-                                            <button
-                                                class="text-blue-500 hover:underline text-sm mt-2"
+                                            <button class="text-blue-500 hover:underline text-sm mt-2"
                                                 onclick="showReplyForm({{ $item->id }})">Reply</button>
                                         @else
                                             <p class="text-sm text-gray-500 mt-2">
-                                                Please <a href="{{ route('login') }}" class="text-blue-500 hover:underline">login</a> to reply.
+                                                Please <a href="{{ route('login') }}"
+                                                    class="text-blue-500 hover:underline">login</a> to reply.
                                             </p>
                                         @endif
 
@@ -106,3 +106,14 @@
 
     @endsection
 </x-app-layout>
+
+<script>
+    function showReplyForm(commentId) {
+        const replyForm = document.getElementById('reply-form-' + commentId);
+        if (replyForm.classList.contains('hidden')) {
+            replyForm.classList.remove('hidden');
+        } else {
+            replyForm.classList.add('hidden');
+        }
+    }
+</script>

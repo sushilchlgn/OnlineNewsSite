@@ -8,27 +8,34 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        "body",
-        "user_id",
-        "post_id",
-        "parent_id",
+        'body',
+        'user_id',
+        'post_id',
+        'parent_id',
     ];
 
-    function post()
+    // Each comment belongs to a post
+    public function post()
     {
         return $this->belongsTo(Post::class);
     }
-    function user()
+
+    // Each comment belongs to a user
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    function replies()
+    // A comment can have many replies (child comments)
+    public function replies()
     {
         return $this->hasMany(Comment::class, 'parent_id');
     }
-     function comments()
+
+    // Parent comment, useful when accessing the parent of a reply
+    public function parent()
     {
         return $this->belongsTo(Comment::class, 'parent_id');
     }

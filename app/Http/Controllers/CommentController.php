@@ -13,16 +13,17 @@ class CommentController extends Controller
      */
     public function index()
     {
-        $comment = Comment::whereNull('parent_id')->with('replies.user')->get();
+        $comment = Comment::where('user_id',auth()->id())->get();
+        // $comment = Comment::whereNull('parent_id')->with('replies.user')->get();
         return view("admin.comments.index", compact("comment"));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        $post = Post::all();
+        $post = Post::where('user_id', auth()->id())->get();
         return view("admin.comments.create", compact("post"));
     }
 
